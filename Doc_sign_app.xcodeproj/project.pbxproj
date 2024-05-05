@@ -7,24 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C4425E692BC2F27600038D74 /* CustomQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E682BC2F27600038D74 /* CustomQRCodeButton.swift */; };
-		C4425E6B2BC2FC0700038D74 /* CustomArchiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E6A2BC2FC0700038D74 /* CustomArchiveButton.swift */; };
 		C4425E6D2BC3DB9500038D74 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E6C2BC3DB9500038D74 /* ArchiveViewController.swift */; };
 		C4425E6F2BC3E72900038D74 /* ProfileViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E6E2BC3E72900038D74 /* ProfileViewController1.swift */; };
 		C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E702BC3E75D00038D74 /* QRcodeViewController.swift */; };
-		C4425E732BC4029C00038D74 /* CustomPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E722BC4029C00038D74 /* CustomPhotoButton.swift */; };
-		C4425E752BC405FA00038D74 /* CustomMyDataButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E742BC405FA00038D74 /* CustomMyDataButton.swift */; };
-		C4425E772BC40C2400038D74 /* CustomEditDataButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E762BC40C2400038D74 /* CustomEditDataButton.swift */; };
 		C4425E792BC40E2F00038D74 /* ProfileViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E782BC40E2F00038D74 /* ProfileViewController2.swift */; };
 		C4425E7B2BC411A500038D74 /* ProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E7A2BC411A500038D74 /* ProfileViewController3.swift */; };
 		C4425E7D2BC7E04200038D74 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E7C2BC7E04200038D74 /* AuthManager.swift */; };
 		C4425E842BC7E80400038D74 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E832BC7E80400038D74 /* Logger.swift */; };
 		C4425E882BC818B200038D74 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E872BC818B200038D74 /* Validator.swift */; };
 		C4425E8A2BC8195B00038D74 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E892BC8195B00038D74 /* AlertManager.swift */; };
-		C45199C22BD1352C008078F3 /* CustomDocButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45199C12BD1352C008078F3 /* CustomDocButton.swift */; };
-		C45199C42BD52A68008078F3 /* CustomWhiteBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45199C32BD52A67008078F3 /* CustomWhiteBackButton.swift */; };
-		C46BCE1C2B66562100D05DEF /* CustomTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE1B2B66562100D05DEF /* CustomTextButton.swift */; };
-		C46BCE1E2B67B99100D05DEF /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE1D2B67B99000D05DEF /* CustomBackButton.swift */; };
 		C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */; };
 		C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE212B67D6E300D05DEF /* RegisterController3.swift */; };
 		C46BCE262B67D77100D05DEF /* ForgotPasswordController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */; };
@@ -36,15 +27,27 @@
 		C46DA9A82B1F445400BA694F /* Doc_sign_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA9A72B1F445400BA694F /* Doc_sign_appUITests.swift */; };
 		C46DA9AA2B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA9A92B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift */; };
 		C46DA9B62B1F447C00BA694F /* Doc_sign_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA99D2B1F445400BA694F /* Doc_sign_appTests.swift */; };
-		C48674832BA8157900CA47D6 /* CustomSideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674822BA8157900CA47D6 /* CustomSideButton.swift */; };
-		C48674852BA81ED600CA47D6 /* CustomAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674842BA81ED600CA47D6 /* CustomAddButton.swift */; };
+		C4786EA52BDA83FE00182397 /* CustomSideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E992BDA83FE00182397 /* CustomSideButton.swift */; };
+		C4786EA62BDA83FE00182397 /* CustomMyDataButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */; };
+		C4786EA72BDA83FE00182397 /* CustomQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */; };
+		C4786EA82BDA83FE00182397 /* CustomWhiteBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9C2BDA83FE00182397 /* CustomWhiteBackButton.swift */; };
+		C4786EA92BDA83FE00182397 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9D2BDA83FE00182397 /* CustomButton.swift */; };
+		C4786EAA2BDA83FE00182397 /* CustomArchiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9E2BDA83FE00182397 /* CustomArchiveButton.swift */; };
+		C4786EAB2BDA83FE00182397 /* CustomTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9F2BDA83FE00182397 /* CustomTextButton.swift */; };
+		C4786EAC2BDA83FE00182397 /* CustomDocButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EA02BDA83FE00182397 /* CustomDocButton.swift */; };
+		C4786EAD2BDA83FE00182397 /* CustomPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EA12BDA83FE00182397 /* CustomPhotoButton.swift */; };
+		C4786EAE2BDA83FE00182397 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EA22BDA83FE00182397 /* CustomBackButton.swift */; };
+		C4786EAF2BDA83FE00182397 /* CustomAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EA32BDA83FE00182397 /* CustomAddButton.swift */; };
+		C4786EB02BDA83FE00182397 /* CustomEditDataButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EA42BDA83FE00182397 /* CustomEditDataButton.swift */; };
+		C4786EB42BDA840500182397 /* CustomPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB22BDA840500182397 /* CustomPasswordTextField.swift */; };
+		C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB32BDA840500182397 /* CustomTextField.swift */; };
+		C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */; };
+		C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */; };
 		C48674872BA8810300CA47D6 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674862BA8810300CA47D6 /* ContainerViewController.swift */; };
 		C48674892BA8815C00CA47D6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674882BA8815C00CA47D6 /* MenuViewController.swift */; };
 		C486748C2BA881D400CA47D6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486748B2BA881D400CA47D6 /* HomeViewController.swift */; };
 		C49587F12BCEA9F900DB76B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C49587F02BCEA9F900DB76B1 /* Alamofire */; };
 		C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */; };
-		C4D5E1AF2B4D67CE00F9DAA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1AE2B4D67CE00F9DAA3 /* CustomButton.swift */; };
-		C4D5E1B12B4D681700F9DAA3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B02B4D681700F9DAA3 /* CustomTextField.swift */; };
 		C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */; };
 		C4D5E1B52B4D7F2200F9DAA3 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */; };
 		C4D5E1B72B4D805A00F9DAA3 /* LoginORregController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B62B4D805A00F9DAA3 /* LoginORregController.swift */; };
@@ -52,7 +55,6 @@
 		C4D5E1BE2B4D83C700F9DAA3 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1BD2B4D83C700F9DAA3 /* UIColors.swift */; };
 		C4D5E1CA2B544E3400F9DAA3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1C92B544E3400F9DAA3 /* UIView.swift */; };
 		C4DB2B502BC955570064375B /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B4F2BC955570064375B /* AuthModels.swift */; };
-		C4DB2B542BCE67DE0064375B /* CustomPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B532BCE67DE0064375B /* CustomPasswordTextField.swift */; };
 		C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B592BCE7D420064375B /* Debugger.swift */; };
 		C4E9BB192BC9099E001A758F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E9BB182BC9099E001A758F /* UserDefaults.swift */; };
 		C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E9BB1A2BC90E58001A758F /* AppManager.swift */; };
@@ -76,24 +78,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C4425E682BC2F27600038D74 /* CustomQRCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQRCodeButton.swift; sourceTree = "<group>"; };
-		C4425E6A2BC2FC0700038D74 /* CustomArchiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomArchiveButton.swift; sourceTree = "<group>"; };
 		C4425E6C2BC3DB9500038D74 /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		C4425E6E2BC3E72900038D74 /* ProfileViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController1.swift; sourceTree = "<group>"; };
 		C4425E702BC3E75D00038D74 /* QRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeViewController.swift; sourceTree = "<group>"; };
-		C4425E722BC4029C00038D74 /* CustomPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhotoButton.swift; sourceTree = "<group>"; };
-		C4425E742BC405FA00038D74 /* CustomMyDataButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMyDataButton.swift; sourceTree = "<group>"; };
-		C4425E762BC40C2400038D74 /* CustomEditDataButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditDataButton.swift; sourceTree = "<group>"; };
 		C4425E782BC40E2F00038D74 /* ProfileViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController2.swift; sourceTree = "<group>"; };
 		C4425E7A2BC411A500038D74 /* ProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController3.swift; sourceTree = "<group>"; };
 		C4425E7C2BC7E04200038D74 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		C4425E832BC7E80400038D74 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C4425E872BC818B200038D74 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C4425E892BC8195B00038D74 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		C45199C12BD1352C008078F3 /* CustomDocButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDocButton.swift; sourceTree = "<group>"; };
-		C45199C32BD52A67008078F3 /* CustomWhiteBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWhiteBackButton.swift; sourceTree = "<group>"; };
-		C46BCE1B2B66562100D05DEF /* CustomTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextButton.swift; sourceTree = "<group>"; };
-		C46BCE1D2B67B99000D05DEF /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController2.swift; sourceTree = "<group>"; };
 		C46BCE212B67D6E300D05DEF /* RegisterController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController3.swift; sourceTree = "<group>"; };
 		C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController2.swift; sourceTree = "<group>"; };
@@ -109,14 +102,26 @@
 		C46DA9A32B1F445400BA694F /* Doc_sign_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Doc_sign_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46DA9A72B1F445400BA694F /* Doc_sign_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doc_sign_appUITests.swift; sourceTree = "<group>"; };
 		C46DA9A92B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doc_sign_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C48674822BA8157900CA47D6 /* CustomSideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideButton.swift; sourceTree = "<group>"; };
-		C48674842BA81ED600CA47D6 /* CustomAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddButton.swift; sourceTree = "<group>"; };
+		C4786E992BDA83FE00182397 /* CustomSideButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSideButton.swift; sourceTree = "<group>"; };
+		C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMyDataButton.swift; sourceTree = "<group>"; };
+		C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQRCodeButton.swift; sourceTree = "<group>"; };
+		C4786E9C2BDA83FE00182397 /* CustomWhiteBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWhiteBackButton.swift; sourceTree = "<group>"; };
+		C4786E9D2BDA83FE00182397 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		C4786E9E2BDA83FE00182397 /* CustomArchiveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomArchiveButton.swift; sourceTree = "<group>"; };
+		C4786E9F2BDA83FE00182397 /* CustomTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextButton.swift; sourceTree = "<group>"; };
+		C4786EA02BDA83FE00182397 /* CustomDocButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDocButton.swift; sourceTree = "<group>"; };
+		C4786EA12BDA83FE00182397 /* CustomPhotoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPhotoButton.swift; sourceTree = "<group>"; };
+		C4786EA22BDA83FE00182397 /* CustomBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		C4786EA32BDA83FE00182397 /* CustomAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAddButton.swift; sourceTree = "<group>"; };
+		C4786EA42BDA83FE00182397 /* CustomEditDataButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEditDataButton.swift; sourceTree = "<group>"; };
+		C4786EB22BDA840500182397 /* CustomPasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPasswordTextField.swift; sourceTree = "<group>"; };
+		C4786EB32BDA840500182397 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
+		C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController4.swift; sourceTree = "<group>"; };
 		C48674862BA8810300CA47D6 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C48674882BA8815C00CA47D6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C486748B2BA881D400CA47D6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
-		C4D5E1AE2B4D67CE00F9DAA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		C4D5E1B02B4D681700F9DAA3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		C4D5E1B62B4D805A00F9DAA3 /* LoginORregController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginORregController.swift; sourceTree = "<group>"; };
@@ -124,7 +129,6 @@
 		C4D5E1BD2B4D83C700F9DAA3 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		C4D5E1C92B544E3400F9DAA3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C4DB2B4F2BC955570064375B /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
-		C4DB2B532BCE67DE0064375B /* CustomPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPasswordTextField.swift; sourceTree = "<group>"; };
 		C4DB2B592BCE7D420064375B /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
 		C4E9BB182BC9099E001A758F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C4E9BB1A2BC90E58001A758F /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -240,6 +244,35 @@
 			path = Doc_sign_appUITests;
 			sourceTree = "<group>";
 		};
+		C4786E982BDA83FE00182397 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C4786E992BDA83FE00182397 /* CustomSideButton.swift */,
+				C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */,
+				C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */,
+				C4786E9C2BDA83FE00182397 /* CustomWhiteBackButton.swift */,
+				C4786E9D2BDA83FE00182397 /* CustomButton.swift */,
+				C4786E9E2BDA83FE00182397 /* CustomArchiveButton.swift */,
+				C4786E9F2BDA83FE00182397 /* CustomTextButton.swift */,
+				C4786EA02BDA83FE00182397 /* CustomDocButton.swift */,
+				C4786EA12BDA83FE00182397 /* CustomPhotoButton.swift */,
+				C4786EA22BDA83FE00182397 /* CustomBackButton.swift */,
+				C4786EA32BDA83FE00182397 /* CustomAddButton.swift */,
+				C4786EA42BDA83FE00182397 /* CustomEditDataButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C4786EB12BDA840500182397 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				C4786EB22BDA840500182397 /* CustomPasswordTextField.swift */,
+				C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */,
+				C4786EB32BDA840500182397 /* CustomTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
 		C485862C2BBC862D00E2E60C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,20 +320,8 @@
 		C4D5E1AD2B4D67A200F9DAA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C4D5E1AE2B4D67CE00F9DAA3 /* CustomButton.swift */,
-				C46BCE1B2B66562100D05DEF /* CustomTextButton.swift */,
-				C46BCE1D2B67B99000D05DEF /* CustomBackButton.swift */,
-				C45199C32BD52A67008078F3 /* CustomWhiteBackButton.swift */,
-				C4D5E1B02B4D681700F9DAA3 /* CustomTextField.swift */,
-				C4DB2B532BCE67DE0064375B /* CustomPasswordTextField.swift */,
-				C48674822BA8157900CA47D6 /* CustomSideButton.swift */,
-				C48674842BA81ED600CA47D6 /* CustomAddButton.swift */,
-				C4425E682BC2F27600038D74 /* CustomQRCodeButton.swift */,
-				C45199C12BD1352C008078F3 /* CustomDocButton.swift */,
-				C4425E6A2BC2FC0700038D74 /* CustomArchiveButton.swift */,
-				C4425E722BC4029C00038D74 /* CustomPhotoButton.swift */,
-				C4425E742BC405FA00038D74 /* CustomMyDataButton.swift */,
-				C4425E762BC40C2400038D74 /* CustomEditDataButton.swift */,
+				C4786EB12BDA840500182397 /* TextFields */,
+				C4786E982BDA83FE00182397 /* Buttons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +367,7 @@
 				C4425E6E2BC3E72900038D74 /* ProfileViewController1.swift */,
 				C4425E782BC40E2F00038D74 /* ProfileViewController2.swift */,
 				C4425E7A2BC411A500038D74 /* ProfileViewController3.swift */,
+				C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -511,48 +533,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				C486748C2BA881D400CA47D6 /* HomeViewController.swift in Sources */,
-				C45199C42BD52A68008078F3 /* CustomWhiteBackButton.swift in Sources */,
 				C4D5E1CA2B544E3400F9DAA3 /* UIView.swift in Sources */,
 				C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */,
+				C4786EAE2BDA83FE00182397 /* CustomBackButton.swift in Sources */,
+				C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */,
+				C4786EA72BDA83FE00182397 /* CustomQRCodeButton.swift in Sources */,
 				C4D5E1BE2B4D83C700F9DAA3 /* UIColors.swift in Sources */,
+				C4786EA52BDA83FE00182397 /* CustomSideButton.swift in Sources */,
 				C4425E882BC818B200038D74 /* Validator.swift in Sources */,
 				C4D5E1B72B4D805A00F9DAA3 /* LoginORregController.swift in Sources */,
 				C4425E7B2BC411A500038D74 /* ProfileViewController3.swift in Sources */,
-				C48674832BA8157900CA47D6 /* CustomSideButton.swift in Sources */,
-				C48674852BA81ED600CA47D6 /* CustomAddButton.swift in Sources */,
+				C4786EA62BDA83FE00182397 /* CustomMyDataButton.swift in Sources */,
 				C46BCE262B67D77100D05DEF /* ForgotPasswordController2.swift in Sources */,
+				C4786EAC2BDA83FE00182397 /* CustomDocButton.swift in Sources */,
 				C4425E6F2BC3E72900038D74 /* ProfileViewController1.swift in Sources */,
 				C4D5E1B52B4D7F2200F9DAA3 /* ForgotPasswordController.swift in Sources */,
 				C48674872BA8810300CA47D6 /* ContainerViewController.swift in Sources */,
 				C4D5E1BA2B4D832300F9DAA3 /* Resources.swift in Sources */,
-				C4425E6B2BC2FC0700038D74 /* CustomArchiveButton.swift in Sources */,
+				C4786EA82BDA83FE00182397 /* CustomWhiteBackButton.swift in Sources */,
+				C4786EA92BDA83FE00182397 /* CustomButton.swift in Sources */,
+				C4786EB42BDA840500182397 /* CustomPasswordTextField.swift in Sources */,
 				C4E9BB192BC9099E001A758F /* UserDefaults.swift in Sources */,
-				C46BCE1E2B67B99100D05DEF /* CustomBackButton.swift in Sources */,
 				C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */,
-				C46BCE1C2B66562100D05DEF /* CustomTextButton.swift in Sources */,
 				C4425E842BC7E80400038D74 /* Logger.swift in Sources */,
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
+				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
 				C4425E6D2BC3DB9500038D74 /* ArchiveViewController.swift in Sources */,
-				C4DB2B542BCE67DE0064375B /* CustomPasswordTextField.swift in Sources */,
-				C4425E732BC4029C00038D74 /* CustomPhotoButton.swift in Sources */,
 				C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */,
+				C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */,
 				C4DB2B502BC955570064375B /* AuthModels.swift in Sources */,
-				C4425E772BC40C2400038D74 /* CustomEditDataButton.swift in Sources */,
-				C4D5E1B12B4D681700F9DAA3 /* CustomTextField.swift in Sources */,
-				C45199C22BD1352C008078F3 /* CustomDocButton.swift in Sources */,
+				C4786EAA2BDA83FE00182397 /* CustomArchiveButton.swift in Sources */,
 				C48674892BA8815C00CA47D6 /* MenuViewController.swift in Sources */,
 				C4425E792BC40E2F00038D74 /* ProfileViewController2.swift in Sources */,
-				C4425E752BC405FA00038D74 /* CustomMyDataButton.swift in Sources */,
 				C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */,
 				C4425E8A2BC8195B00038D74 /* AlertManager.swift in Sources */,
+				C4786EAD2BDA83FE00182397 /* CustomPhotoButton.swift in Sources */,
 				C46DA9872B1F445100BA694F /* AppDelegate.swift in Sources */,
 				C46DA9892B1F445100BA694F /* SceneDelegate.swift in Sources */,
 				C46BCE282B67D77D00D05DEF /* ForgotPasswordController3.swift in Sources */,
-				C4D5E1AF2B4D67CE00F9DAA3 /* CustomButton.swift in Sources */,
 				C4425E7D2BC7E04200038D74 /* AuthManager.swift in Sources */,
-				C4425E692BC2F27600038D74 /* CustomQRCodeButton.swift in Sources */,
 				C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */,
+				C4786EB02BDA83FE00182397 /* CustomEditDataButton.swift in Sources */,
+				C4786EAF2BDA83FE00182397 /* CustomAddButton.swift in Sources */,
+				C4786EAB2BDA83FE00182397 /* CustomTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

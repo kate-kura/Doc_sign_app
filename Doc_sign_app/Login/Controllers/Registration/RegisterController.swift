@@ -184,9 +184,7 @@ extension RegisterViewController{
     }
     
     @objc private func didTapBack() {
-        let vc = LoginORRegisrationViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapNext() {
@@ -236,6 +234,23 @@ extension RegisterViewController{
 }
         
 extension RegisterViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        DispatchQueue.main.async {
+            self.checkTextFields()
+        }
+        return true
+    }
+    
+    func checkTextFields() {
+        guard let mail = emailTextField.text, let password = passwordTextField.text, let againPassword = againPasswordTextField.text else { return }
+
+        if !mail.isEmpty && !password.isEmpty && !againPassword.isEmpty {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

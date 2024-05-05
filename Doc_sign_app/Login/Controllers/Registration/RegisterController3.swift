@@ -126,6 +126,18 @@ extension RegisterViewController3{
         guard let firstName = self.nameTextField.text else {return}
         guard let lastName = self.surnameTextField.text else {return}
        
+        // Name check
+        if !Validator.isNameAndSurnameValid(for: firstName) {
+            AlertManager.showInvalidNameAlert(on: self)
+            return
+        }
+        
+        // Surname check
+        if !Validator.isNameAndSurnameValid(for: lastName) {
+            AlertManager.showInvalidSurnameAlert(on: self)
+            return
+        }
+        
         AuthManager().completeSignUp(firstName: firstName, lastName: lastName, completion: { result, statusCode in
             if result {
                 DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckIfSignedIn)
@@ -161,10 +173,10 @@ extension RegisterViewController3: UITextFieldDelegate {
     func checkTextFields() {
         guard let name = nameTextField.text, let surname = surnameTextField.text else { return }
 
-        let isTextField1FirstResponder = nameTextField.isFirstResponder
-        let isTextField2FirstResponder = surnameTextField.isFirstResponder
+//        let isTextField1FirstResponder = nameTextField.isFirstResponder
+//        let isTextField2FirstResponder = surnameTextField.isFirstResponder
 
-        if !name.isEmpty && !surname.isEmpty && (isTextField1FirstResponder || isTextField2FirstResponder) {
+        if !name.isEmpty && !surname.isEmpty /*&& (isTextField1FirstResponder || isTextField2FirstResponder)*/ {
             nextButton.isEnabled = true
         } else {
             nextButton.isEnabled = false

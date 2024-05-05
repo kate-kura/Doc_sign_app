@@ -180,9 +180,7 @@ extension ProfileViewController2{
     }
     
     @objc private func didTapBack() {
-        let vc = ProfileViewController1()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc private func didTapNext() {

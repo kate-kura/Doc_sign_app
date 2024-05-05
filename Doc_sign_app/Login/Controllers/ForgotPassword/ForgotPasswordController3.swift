@@ -209,6 +209,23 @@ extension ForgotPasswordViewController3{
 
 extension ForgotPasswordViewController3: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        DispatchQueue.main.async {
+            self.checkTextFields()
+        }
+        return true
+    }
+    
+    func checkTextFields() {
+        guard let password = passwordTextField.text, let againPassword = againPasswordTextField.text else { return }
+
+        if !password.isEmpty && !againPassword.isEmpty {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard let password = passwordTextField.text, let againPassword = againPasswordTextField.text else {

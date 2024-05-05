@@ -23,6 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let (wasLaunchedBefore, isLoggedIn) = Debugger().checkOnLaunch()
         
+//        Logg.err(.debug, "Proceeding to \"Home\" View...")
+//        window?.rootViewController = ContainerViewController()
+//        window?.makeKeyAndVisible()
+        
         if (!wasLaunchedBefore || !isLoggedIn) {
             Logg.err(.debug, "Proceeding to \"Sign In\" View...")
             window?.rootViewController = LoginORRegisrationViewController()

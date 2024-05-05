@@ -59,11 +59,13 @@ enum Resources {
         static var profileLabel = "Профиль"
         static var myDataLabel = "Мои данные"
         static var editDataLabel = "Редактировать данные"
+        static var save = "Сохранить"
         static var basic = "Основное"
         static var contacts = "Контакты"
         static var mail = "Почта"
         static var exitButton = "Выйти из аккаунта"
         
+        static var qrText = "Наведите камеру на QR-код"
     }
     
     enum Images {

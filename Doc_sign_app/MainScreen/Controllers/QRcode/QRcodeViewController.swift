@@ -94,11 +94,11 @@ extension QRcodeViewController {
         ])
     }
     
-    func configure() {
+    func configure() {        
         backButton.translatesAutoresizingMaskIntoConstraints = false
         massageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        massageLabel.text = "Наведите камеру на QR-код"
+        massageLabel.text = Resources.Strings.qrText
         massageLabel.textColor = Resources.Colors.white
         massageLabel.textAlignment = .center
         massageLabel.font = Resources.Fonts.helveticaRegular(with: 18)
@@ -114,18 +114,25 @@ extension QRcodeViewController {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            massageLabel.text = "Наведите камеру на QR-код"
+            massageLabel.text = Resources.Strings.qrText
             return
         }
         
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
-            let barCodeObj = vedioPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObj!.bounds
+            let qrCodeObject = vedioPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = qrCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
                 massageLabel.text = metadataObj.stringValue
+            }
+            
+            if let qrCodeString = metadataObj.stringValue {
+                // Извлекаем ID из распознанного QR-кода
+                let components = qrCodeString.components(separatedBy: "/")
+                let id = components.last
+                print("ID из QR-кода: \(id ?? "")")
             }
         }
     }

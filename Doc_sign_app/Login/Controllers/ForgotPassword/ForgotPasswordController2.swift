@@ -92,12 +92,11 @@ extension ForgotPasswordViewController2{
         codeTextField.placeholder = Resources.Strings.code
         
         nextButton.setTitle(Resources.Strings.confirm)
+        nextButton.isEnabled = false
     }
     
     @objc private func didTapBack() {
-        let vc = ForgotPasswordViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc private func didTapNext() {
@@ -118,6 +117,23 @@ extension ForgotPasswordViewController2{
 }
 
 extension ForgotPasswordViewController2: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        DispatchQueue.main.async {
+            self.checkTextFields()
+        }
+        return true
+    }
+    
+    func checkTextFields() {
+        guard let code = codeTextField.text else { return }
+
+        if !code.isEmpty {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

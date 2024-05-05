@@ -22,4 +22,12 @@ class Validator {
         let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordPred.evaluate(with: password)
     }
+    
+    static func isNameAndSurnameValid(for name: String) -> Bool {
+        let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let nameRegEx = #"^[А-Яа-яЁё\s]+$"#
+        let namePred = NSPredicate(format: "SELF MATCHES %@", nameRegEx)
+        let nameLength = NSPredicate(format: "SELF.count <= 30")
+        return namePred.evaluate(with: name) && nameLength.evaluate(with: name)
+    }
 }

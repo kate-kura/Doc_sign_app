@@ -38,6 +38,14 @@ extension AlertManager {
     public static func showPasswordMismatchAlert(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Passwords Do Not Match", message: nil)
     }
+    
+    public static func showInvalidNameAlert(on vc: UIViewController) {
+        self.showBasicAlert(on: vc, title: "Invalid Name", message: "Please enter the name using letters.")
+    }
+    
+    public static func showInvalidSurnameAlert(on vc: UIViewController) {
+        self.showBasicAlert(on: vc, title: "Invalid Surname", message: "Please enter the surname using letters.")
+    }
 }
 
 
