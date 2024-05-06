@@ -42,6 +42,10 @@ class MenuViewController: UIViewController {
         qrCodeButtom.addTarget(self, action: #selector(didSelect(sender:)), for: .touchUpInside)
         archiveButton.addTarget(self, action: #selector(didSelect(sender:)), for: .touchUpInside)
         
+        profileButton.addTarget(self, action: #selector(buttonTapped), for: .touchDown)
+        profileButton.addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
+        
         let (wasLaunchedBefore, isLoggedIn) = Debugger().checkOnLaunch()
         if (isLoggedIn && wasLaunchedBefore) {
             loadImageFromLocal()
@@ -145,6 +149,18 @@ extension MenuViewController {
             delegate?.didSelect(menuItem: .archive)
         default:
             break
+        }
+    }
+    
+    @objc private func buttonTapped() {
+        UIView.animate(withDuration: 0.05) {
+            self.profileButton.alpha = 0.8
+        }
+    }
+        
+    @objc private func buttonReleased() {
+        UIView.animate(withDuration: 0.05) {
+            self.profileButton.alpha = 1.0
         }
     }
 }

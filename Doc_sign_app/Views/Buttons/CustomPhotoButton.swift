@@ -17,12 +17,27 @@ final class CustomPhotoButton: UIButton {
         addViews()
         layoutViews()
         configure()
+        
+        addTarget(self, action: #selector(buttonTapped), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc private func buttonTapped() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 0.8
+        }
+    }
+        
+    @objc private func buttonReleased() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 1.0
+        }
+    }
 }
 
 private extension CustomPhotoButton {

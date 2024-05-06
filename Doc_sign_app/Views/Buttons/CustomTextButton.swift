@@ -17,6 +17,10 @@ final class CustomTextButton: UIButton {
         addViews()
         layoutViews()
         configure()
+        
+        addTarget(self, action: #selector(buttonTapped), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
     }
     
     required init?(coder: NSCoder) {
@@ -27,6 +31,17 @@ final class CustomTextButton: UIButton {
         label.text = title
     }
     
+    @objc private func buttonTapped() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 0.8
+        }
+    }
+        
+    @objc private func buttonReleased() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 1.0
+        }
+    }
 }
 
 private extension CustomTextButton {

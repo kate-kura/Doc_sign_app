@@ -27,7 +27,7 @@ class ContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = Resources.Colors.white
         addChildVCs()
         
     }

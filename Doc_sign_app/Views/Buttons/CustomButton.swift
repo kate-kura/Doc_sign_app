@@ -17,6 +17,10 @@ final class CustomButton: UIButton {
         addViews()
         layoutViews()
         configure()
+        
+        addTarget(self, action: #selector(buttonTapped), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
     }
     
     required init?(coder: NSCoder) {
@@ -25,6 +29,18 @@ final class CustomButton: UIButton {
     
     func setTitle(_ title: String) {
         label.text = title
+    }
+    
+    @objc private func buttonTapped() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 0.8
+        }
+    }
+        
+    @objc private func buttonReleased() {
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 1.0
+        }
     }
 }
 

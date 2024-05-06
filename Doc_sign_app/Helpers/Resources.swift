@@ -15,6 +15,7 @@ enum Resources {
         static var secondaryLabelColor = UIColor(hexString: "#687590")
         static var primaryLabelColor = UIColor(hexString: "#262626")
         static var redColor = UIColor(hexString: "#F45D2D")
+        static var greenColor = UIColor(hexString: "#54DB7F")
         
     }
     
@@ -65,7 +66,12 @@ enum Resources {
         static var mail = "Почта"
         static var exitButton = "Выйти из аккаунта"
         
-        static var qrText = "Наведите камеру на QR-код"
+        static var qrText = "QR-код будет отсканирован автоматически, как только вы поместите его внутрь квадрата"
+        static var document = "Договор"
+        static var documentSigned = "Договор подписан!"
+        static var done = "Готово"
+        static var toSign = "Подписать"
+        static var openDocument = "Открыть документ"
     }
     
     enum Images {
@@ -81,6 +87,7 @@ enum Resources {
         static var camera = UIImage(systemName: "camera")
         static var eye = UIImage(systemName: "eye")
         static var eyeClosed = UIImage(systemName: "eye.slash")
+        static var check = UIImage(systemName: "checkmark")
         
     }
     
@@ -129,5 +136,7 @@ enum Resources {
         static let keyCurrentUserFirstName = "currentUserFirstName"
         static let keyCurrentUserLastName = "currentUserLastName"
         static let keyCurrentUserProfileImage = "currentUserProfileImage"
+        
+        static let keyCurrentQRcodeID = "currentQRcodeID"
     }
 }

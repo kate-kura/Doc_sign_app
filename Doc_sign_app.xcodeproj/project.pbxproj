@@ -43,10 +43,13 @@
 		C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB32BDA840500182397 /* CustomTextField.swift */; };
 		C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */; };
 		C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */; };
+		C4786EBB2BE8C91700182397 /* DocFromQRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EBA2BE8C91600182397 /* DocFromQRcodeViewController.swift */; };
+		C4786EBD2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EBC2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift */; };
 		C48674872BA8810300CA47D6 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674862BA8810300CA47D6 /* ContainerViewController.swift */; };
 		C48674892BA8815C00CA47D6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674882BA8815C00CA47D6 /* MenuViewController.swift */; };
 		C486748C2BA881D400CA47D6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486748B2BA881D400CA47D6 /* HomeViewController.swift */; };
 		C49587F12BCEA9F900DB76B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C49587F02BCEA9F900DB76B1 /* Alamofire */; };
+		C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */; };
 		C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */; };
 		C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */; };
 		C4D5E1B52B4D7F2200F9DAA3 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */; };
@@ -118,9 +121,12 @@
 		C4786EB32BDA840500182397 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
 		C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController4.swift; sourceTree = "<group>"; };
+		C4786EBA2BE8C91600182397 /* DocFromQRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocFromQRcodeViewController.swift; sourceTree = "<group>"; };
+		C4786EBC2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocFromQRcodeIsSignedViewController.swift; sourceTree = "<group>"; };
 		C48674862BA8810300CA47D6 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C48674882BA8815C00CA47D6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C486748B2BA881D400CA47D6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 			children = (
 				C4786EB12BDA840500182397 /* TextFields */,
 				C4786E982BDA83FE00182397 /* Buttons */,
+				C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +383,8 @@
 			isa = PBXGroup;
 			children = (
 				C4425E702BC3E75D00038D74 /* QRcodeViewController.swift */,
+				C4786EBA2BE8C91600182397 /* DocFromQRcodeViewController.swift */,
+				C4786EBC2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift */,
 			);
 			path = QRcode;
 			sourceTree = "<group>";
@@ -559,6 +568,7 @@
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
 				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
+				C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */,
 				C4425E6D2BC3DB9500038D74 /* ArchiveViewController.swift in Sources */,
 				C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */,
 				C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */,
@@ -571,10 +581,12 @@
 				C4786EAD2BDA83FE00182397 /* CustomPhotoButton.swift in Sources */,
 				C46DA9872B1F445100BA694F /* AppDelegate.swift in Sources */,
 				C46DA9892B1F445100BA694F /* SceneDelegate.swift in Sources */,
+				C4786EBB2BE8C91700182397 /* DocFromQRcodeViewController.swift in Sources */,
 				C46BCE282B67D77D00D05DEF /* ForgotPasswordController3.swift in Sources */,
 				C4425E7D2BC7E04200038D74 /* AuthManager.swift in Sources */,
 				C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */,
 				C4786EB02BDA83FE00182397 /* CustomEditDataButton.swift in Sources */,
+				C4786EBD2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift in Sources */,
 				C4786EAF2BDA83FE00182397 /* CustomAddButton.swift in Sources */,
 				C4786EAB2BDA83FE00182397 /* CustomTextButton.swift in Sources */,
 			);
