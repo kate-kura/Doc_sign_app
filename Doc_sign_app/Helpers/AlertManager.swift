@@ -40,11 +40,11 @@ extension AlertManager {
     }
     
     public static func showInvalidNameAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Name", message: "Please enter the name using letters.")
+        self.showBasicAlert(on: vc, title: "Invalid Name", message: "Please enter the name using russian language.")
     }
     
     public static func showInvalidSurnameAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Surname", message: "Please enter the surname using letters.")
+        self.showBasicAlert(on: vc, title: "Invalid Surname", message: "Please enter the surname using russian language.")
     }
 }
 

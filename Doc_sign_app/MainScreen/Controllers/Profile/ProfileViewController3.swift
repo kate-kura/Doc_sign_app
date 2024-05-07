@@ -14,12 +14,12 @@ class ProfileViewController3: UIViewController {
     
     let basicLabel = UILabel()
     let nameHeader = UILabel()
-    let name = CustomUnderlinedTextField()
+    let nameTextField = CustomUnderlinedTextField()
     let surnameHeader = UILabel()
-    let surname = CustomUnderlinedTextField()
+    let surnameTextField = CustomUnderlinedTextField()
     let contactsLabel = UILabel()
     let mailHeader = UILabel()
-    let mail = CustomUnderlinedTextField()
+    let mailTextField = CustomUnderlinedTextField()
     let nextButton = CustomButton()
     
     let firstName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserFirstName)
@@ -33,9 +33,9 @@ class ProfileViewController3: UIViewController {
         self.layoutViews()
         self.configure()
         
-        name.delegate = self
-        surname.delegate = self
-        mail.delegate = self
+        nameTextField.delegate = self
+        surnameTextField.delegate = self
+        mailTextField.delegate = self
         
         backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
@@ -51,12 +51,12 @@ extension ProfileViewController3 {
         
         view.addSubview(basicLabel)
         view.addSubview(nameHeader)
-        view.addSubview(name)
+        view.addSubview(nameTextField)
         view.addSubview(surnameHeader)
-        view.addSubview(surname)
+        view.addSubview(surnameTextField)
         view.addSubview(contactsLabel)
         view.addSubview(mailHeader)
-        view.addSubview(mail)
+        view.addSubview(mailTextField)
         view.addSubview(nextButton)
     }
     
@@ -75,29 +75,29 @@ extension ProfileViewController3 {
             nameHeader.topAnchor.constraint(equalTo: basicLabel.bottomAnchor, constant: 16),
             nameHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             
-            name.topAnchor.constraint(equalTo: nameHeader.bottomAnchor, constant: 4),
-            name.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            name.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            name.heightAnchor.constraint(equalToConstant: 32),
+            nameTextField.topAnchor.constraint(equalTo: nameHeader.bottomAnchor, constant: 4),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            nameTextField.heightAnchor.constraint(equalToConstant: 32),
             
-            surnameHeader.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 16),
+            surnameHeader.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 16),
             surnameHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             
-            surname.topAnchor.constraint(equalTo: surnameHeader.bottomAnchor, constant: 4),
-            surname.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            surname.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            surname.heightAnchor.constraint(equalToConstant: 32),
+            surnameTextField.topAnchor.constraint(equalTo: surnameHeader.bottomAnchor, constant: 4),
+            surnameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            surnameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            surnameTextField.heightAnchor.constraint(equalToConstant: 32),
             
-            contactsLabel.topAnchor.constraint(equalTo: surname.bottomAnchor, constant: 24),
+            contactsLabel.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 24),
             contactsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             
             mailHeader.topAnchor.constraint(equalTo: contactsLabel.bottomAnchor, constant: 16),
             mailHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             
-            mail.topAnchor.constraint(equalTo: mailHeader.bottomAnchor, constant: 4),
-            mail.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            mail.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            mail.heightAnchor.constraint(equalToConstant: 32),
+            mailTextField.topAnchor.constraint(equalTo: mailHeader.bottomAnchor, constant: 4),
+            mailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            mailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            mailTextField.heightAnchor.constraint(equalToConstant: 32),
             
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
@@ -114,12 +114,12 @@ extension ProfileViewController3 {
         navBarLabel.translatesAutoresizingMaskIntoConstraints = false
         basicLabel.translatesAutoresizingMaskIntoConstraints = false
         nameHeader.translatesAutoresizingMaskIntoConstraints = false
-        name.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
         surnameHeader.translatesAutoresizingMaskIntoConstraints = false
-        surname.translatesAutoresizingMaskIntoConstraints = false
+        surnameTextField.translatesAutoresizingMaskIntoConstraints = false
         contactsLabel.translatesAutoresizingMaskIntoConstraints = false
         mailHeader.translatesAutoresizingMaskIntoConstraints = false
-        mail.translatesAutoresizingMaskIntoConstraints = false
+        mailTextField.translatesAutoresizingMaskIntoConstraints = false
         nextButton.translatesAutoresizingMaskIntoConstraints = false
 
         navBarLabel.textColor = Resources.Colors.secondaryLabelColor
@@ -158,19 +158,20 @@ extension ProfileViewController3 {
         mailHeader.font = Resources.Fonts.helveticaRegular(with: 14)
         mailHeader.sizeToFit()
         
-        name.text = firstName
-        name.keyboardType = .default
-        name.textContentType = .name
-        name.autocapitalizationType = .words
+        nameTextField.text = firstName
+        nameTextField.keyboardType = .default
+        nameTextField.textContentType = .name
+        nameTextField.autocapitalizationType = .words
 
-        surname.text = lastName
-        surname.keyboardType = .default
-        surname.textContentType = .name
-        surname.autocapitalizationType = .words
+        surnameTextField.text = lastName
+        surnameTextField.keyboardType = .default
+        surnameTextField.textContentType = .name
+        surnameTextField.autocapitalizationType = .words
         
-        mail.text = email
-        mail.keyboardType = .emailAddress
-        mail.textContentType = .emailAddress
+        mailTextField.text = email
+        mailTextField.keyboardType = .emailAddress
+        mailTextField.textContentType = .emailAddress
+        mailTextField.isEnabled = false
         
         nextButton.setTitle(Resources.Strings.save)
         nextButton.isEnabled = false
@@ -182,31 +183,41 @@ extension ProfileViewController3 {
     
     @objc private func didTapNext() {
         
-        guard let firstName = self.name.text else {return}
-        guard let lastName = self.surname.text else {return}
-        guard let email = self.mail.text else {return}
+        guard let name = self.nameTextField.text else {return}
+        guard let surname = self.surnameTextField.text else {return}
+//        guard let email = self.mail.text else {return}
         
         // Name check
-        if !Validator.isNameValid(for: firstName) {
+        if !Validator.isNameValid(for: name) {
             AlertManager.showInvalidNameAlert(on: self)
             return
         }
         
         // Surname check
-        if !Validator.isSurnameValid(for: lastName) {
+        if !Validator.isSurnameValid(for: surname) {
             AlertManager.showInvalidSurnameAlert(on: self)
             return
         }
         
-        // Email check
-        if !Validator.isValidEmail(for: email) {
-            AlertManager.showInvalidEmailAlert(on: self)
-            return
-        }
+//        // Email check
+//        if !Validator.isValidEmail(for: email) {
+//            AlertManager.showInvalidEmailAlert(on: self)
+//            return
+//        }
         
-        let vc = ProfileViewController4()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        ProfileManager().updateUserProfileDetails(firstName: name, lastName: surname, completion: { result in
+            if result {
+                let vc = ContainerViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            } else {
+                Logg.err(.error, "Something went wrong during updating User Profile Details.")
+            }
+        })
+        
+//        let vc = ProfileViewController4()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: false, completion: nil)
 
     }
 }
@@ -221,9 +232,9 @@ extension ProfileViewController3: UITextFieldDelegate {
     }
     
     func checkTextFields() {
-        guard let name = name.text, let surname = surname.text, let mail = mail.text else { return }
+        guard let name = nameTextField.text, let surname = surnameTextField.text/*, let mail = mail.text*/ else { return }
 
-        if name != firstName || surname != lastName || mail != email {
+        if name != firstName || surname != lastName /*|| mail != email*/ {
             nextButton.isEnabled = true
         } else {
             nextButton.isEnabled = false

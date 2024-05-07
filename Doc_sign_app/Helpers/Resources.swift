@@ -122,6 +122,7 @@ enum Resources {
         static let logoutURL = baseURL + "/users/physical/auth/log_out"
         
         static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
+        static let updateUserProfileDetailsURL = baseURL + "/users/physical/profile/update_me"
     }
     
     enum Keys {

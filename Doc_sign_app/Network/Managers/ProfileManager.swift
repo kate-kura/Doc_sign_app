@@ -32,7 +32,6 @@ class ProfileManager {
     
     typealias StatusCompletion = (Bool, Int) -> Void
     
-    
     func getUserProfileDetails(completion: @escaping BooleanCompletion) {
         let token: String = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
         
@@ -64,5 +63,38 @@ class ProfileManager {
         }
     }
     
-    
+    func updateUserProfileDetails(firstName: String, lastName: String, completion: @escaping BooleanCompletion) {
+        let token: String = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: [String: String] = [
+            "first_name": firstName,
+            "last_name": lastName
+        ]
+        
+        Logg.err(.action, "Performing \"Update User Profile Details\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserEmail)!)...")
+        
+        AF.request(Resources.API.updateUserProfileDetailsURL,
+                   method: .post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default,
+                   headers: headers).responseDecodable(of: ProfileResultDecodable.self) {response in
+            Logg.err(.AFdebug, response.debugDescription as String)
+            if response.response?.statusCode == 200 {
+                Logg.err(.success, "User Profile Details updated.")
+                let result = true
+                DefaultsHelper().setString(string: firstName, key: Resources.Keys.keyCurrentUserFirstName)
+                DefaultsHelper().setString(string: lastName, key: Resources.Keys.keyCurrentUserLastName)
+                completion(result)
+            } else {
+                Logg.err(.error, "Something wen't wrong during attempt to Update User Profile Details.")
+                let result = false
+                completion(result)
+            }
+        }
+    }
 }
