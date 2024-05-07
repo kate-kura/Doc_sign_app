@@ -50,6 +50,7 @@
 		C486748C2BA881D400CA47D6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486748B2BA881D400CA47D6 /* HomeViewController.swift */; };
 		C49587F12BCEA9F900DB76B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C49587F02BCEA9F900DB76B1 /* Alamofire */; };
 		C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */; };
+		C4A690672BEA39F500FC0C12 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690662BEA39F400FC0C12 /* ProfileManager.swift */; };
 		C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */; };
 		C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */; };
 		C4D5E1B52B4D7F2200F9DAA3 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */; };
@@ -127,6 +128,7 @@
 		C48674882BA8815C00CA47D6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C486748B2BA881D400CA47D6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
+		C4A690662BEA39F400FC0C12 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
@@ -290,7 +292,7 @@
 		C485862F2BBC882100E2E60C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C4DB2B582BCE79580064375B /* AuthManager */,
+				C4DB2B582BCE79580064375B /* Managers */,
 				C485862C2BBC862D00E2E60C /* Models */,
 			);
 			path = Network;
@@ -397,12 +399,13 @@
 			path = Archive;
 			sourceTree = "<group>";
 		};
-		C4DB2B582BCE79580064375B /* AuthManager */ = {
+		C4DB2B582BCE79580064375B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				C4425E7C2BC7E04200038D74 /* AuthManager.swift */,
+				C4A690662BEA39F400FC0C12 /* ProfileManager.swift */,
 			);
-			path = AuthManager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,6 +568,7 @@
 				C4E9BB192BC9099E001A758F /* UserDefaults.swift in Sources */,
 				C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */,
 				C4425E842BC7E80400038D74 /* Logger.swift in Sources */,
+				C4A690672BEA39F500FC0C12 /* ProfileManager.swift in Sources */,
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
 				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,

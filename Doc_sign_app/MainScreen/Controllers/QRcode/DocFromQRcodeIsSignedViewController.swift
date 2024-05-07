@@ -41,7 +41,7 @@ extension DocFromQRcodeIsSignedViewController {
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             circleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            circleView.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -12),
+            circleView.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -20),
             circleView.widthAnchor.constraint(equalToConstant: 56),
             circleView.heightAnchor.constraint(equalToConstant: 56),
             

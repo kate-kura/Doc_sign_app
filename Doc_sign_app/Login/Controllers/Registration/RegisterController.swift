@@ -164,11 +164,11 @@ extension RegisterViewController{
         secondaryLabelPassword.sizeToFit()
         
         passwordTextField.placeholder = Resources.Strings.password
-        passwordTextField.textContentType = .oneTimeCode
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
         
         againPasswordTextField.placeholder = Resources.Strings.againPassword
-        againPasswordTextField.textContentType = .oneTimeCode
+        againPasswordTextField.textContentType = .password
         againPasswordTextField.isSecureTextEntry = true
         
         showPasswordButton.tintColor = Resources.Colors.secondaryLabelColor

@@ -23,11 +23,18 @@ class Validator {
         return passwordPred.evaluate(with: password)
     }
     
-    static func isNameAndSurnameValid(for name: String) -> Bool {
+    static func isNameValid(for name: String) -> Bool {
         let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let nameRegEx = #"^[А-Яа-яЁё\s]+$"#
+        let nameRegEx = "(^[А-Я][а-я]*$)"
         let namePred = NSPredicate(format: "SELF MATCHES %@", nameRegEx)
-        let nameLength = NSPredicate(format: "SELF.count <= 30")
-        return namePred.evaluate(with: name) && nameLength.evaluate(with: name)
+        return namePred.evaluate(with: name)
     }
+    
+    static func isSurnameValid(for surname: String) -> Bool {
+        let surname = surname.trimmingCharacters(in: .whitespacesAndNewlines)
+        let surnameRegEx = "(^[А-Я][а-я]*$)"
+        let surnamePred = NSPredicate(format: "SELF MATCHES %@", surnameRegEx)
+        return surnamePred.evaluate(with: surname)
+    }
+
 }

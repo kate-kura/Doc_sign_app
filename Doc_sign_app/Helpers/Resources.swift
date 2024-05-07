@@ -107,21 +107,21 @@ enum Resources {
         static let baseURL = "http://77.232.143.172:8080/api/v1"
         
         //Auth
-        static let signInURL = baseURL + "/physical/auth/sign_in"
+        static let signInURL = baseURL + "/users/physical/auth/sign_in"
         
-        static let registrationURL = baseURL + "/physical/auth/sign_up/init"
-        static let confirmRegistrationURL = baseURL + "/physical/auth/sign_up/verify_code/"
-        static let completeRegistrationURL = baseURL + "/physical/auth/sign_up/complete"
+        static let registrationURL = baseURL + "/users/physical/auth/sign_up/init"
+        static let confirmRegistrationURL = baseURL + "/users/physical/auth/sign_up/verify_code/"
+        static let completeRegistrationURL = baseURL + "/users/physical/auth/sign_up/complete"
         
-        static let refreshTokenURL = baseURL + "/physical/auth/refresh"
+        static let refreshTokenURL = baseURL + "/users/physical/auth/refresh"
         
-        static let changePasswordURL = baseURL + "/physical/auth/change_password/send_code"
-        static let confirmChangePasswordURL = baseURL + "/physical/auth/change_password/verify_code/"
-        static let setNewPasswordURL = baseURL + "/physical/auth/change_password/set_new_password"
+        static let changePasswordURL = baseURL + "/users/physical/auth/change_password/send_code"
+        static let confirmChangePasswordURL = baseURL + "/users/physical/auth/change_password/verify_code/"
+        static let setNewPasswordURL = baseURL + "/users/physical/auth/change_password/set_new_password"
         
-        static let logoutURL = baseURL + "/physical/auth/log_out"
+        static let logoutURL = baseURL + "/users/physical/auth/log_out"
         
-        static let getUserProfileDetailsURL = baseURL + "/physical/profile/get_me"
+        static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
     }
     
     enum Keys {

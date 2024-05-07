@@ -34,7 +34,7 @@ final class RegisterViewController3: UIViewController {
     
 }
 
-extension RegisterViewController3{
+extension RegisterViewController3 {
     
     private func addViews() {
         view.addSubview(backButton)
@@ -109,7 +109,14 @@ extension RegisterViewController3{
         primaryLabel.sizeToFit()
         
         nameTextField.placeholder = Resources.Strings.name
+        nameTextField.keyboardType = .default
+        nameTextField.textContentType = .name
+        nameTextField.autocapitalizationType = .words
+        
         surnameTextField.placeholder = Resources.Strings.surname
+        surnameTextField.keyboardType = .default
+        surnameTextField.textContentType = .name
+        surnameTextField.autocapitalizationType = .words
         
         nextButton.setTitle(Resources.Strings.endRegistration)
         nextButton.isEnabled = false
@@ -125,15 +132,15 @@ extension RegisterViewController3{
         
         guard let firstName = self.nameTextField.text else {return}
         guard let lastName = self.surnameTextField.text else {return}
-       
+        
         // Name check
-        if !Validator.isNameAndSurnameValid(for: firstName) {
+        if !Validator.isNameValid(for: firstName) {
             AlertManager.showInvalidNameAlert(on: self)
             return
         }
         
         // Surname check
-        if !Validator.isNameAndSurnameValid(for: lastName) {
+        if !Validator.isSurnameValid(for: lastName) {
             AlertManager.showInvalidSurnameAlert(on: self)
             return
         }
@@ -173,10 +180,10 @@ extension RegisterViewController3: UITextFieldDelegate {
     func checkTextFields() {
         guard let name = nameTextField.text, let surname = surnameTextField.text else { return }
 
-//        let isTextField1FirstResponder = nameTextField.isFirstResponder
-//        let isTextField2FirstResponder = surnameTextField.isFirstResponder
+        let isTextField1FirstResponder = nameTextField.isFirstResponder
+        let isTextField2FirstResponder = surnameTextField.isFirstResponder
 
-        if !name.isEmpty && !surname.isEmpty /*&& (isTextField1FirstResponder || isTextField2FirstResponder)*/ {
+        if !name.isEmpty && !surname.isEmpty && (isTextField1FirstResponder || isTextField2FirstResponder) {
             nextButton.isEnabled = true
         } else {
             nextButton.isEnabled = false

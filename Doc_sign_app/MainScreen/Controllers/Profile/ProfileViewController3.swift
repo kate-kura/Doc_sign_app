@@ -161,14 +161,16 @@ extension ProfileViewController3 {
         name.text = firstName
         name.keyboardType = .default
         name.textContentType = .name
+        name.autocapitalizationType = .words
 
         surname.text = lastName
         surname.keyboardType = .default
         surname.textContentType = .name
-
+        surname.autocapitalizationType = .words
+        
         mail.text = email
-        mail.keyboardType = .default
-        mail.textContentType = .name
+        mail.keyboardType = .emailAddress
+        mail.textContentType = .emailAddress
         
         nextButton.setTitle(Resources.Strings.save)
         nextButton.isEnabled = false
@@ -185,13 +187,13 @@ extension ProfileViewController3 {
         guard let email = self.mail.text else {return}
         
         // Name check
-        if !Validator.isNameAndSurnameValid(for: firstName) {
+        if !Validator.isNameValid(for: firstName) {
             AlertManager.showInvalidNameAlert(on: self)
             return
         }
         
         // Surname check
-        if !Validator.isNameAndSurnameValid(for: lastName) {
+        if !Validator.isSurnameValid(for: lastName) {
             AlertManager.showInvalidSurnameAlert(on: self)
             return
         }

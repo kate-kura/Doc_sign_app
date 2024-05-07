@@ -147,7 +147,7 @@ extension LogInViewController{
         emailTextField.textContentType = .emailAddress
         
         passwordTextField.placeholder = Resources.Strings.password
-        passwordTextField.textContentType = .oneTimeCode
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
         
         showPasswordButton.tintColor = Resources.Colors.secondaryLabelColor
@@ -191,7 +191,7 @@ extension LogInViewController{
             if result {
                 DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckIfSignedIn)
                 
-                AuthManager().getUserProfileDetails(completion: { result in
+                ProfileManager().getUserProfileDetails(completion: { result in
                     if result {
                         let vc = ContainerViewController()
                         vc.modalPresentationStyle = .fullScreen

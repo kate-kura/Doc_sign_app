@@ -105,6 +105,8 @@ extension ContainerViewController: MenuViewControllerDelegate {
 
     }
     func addProfile() {
+        removeChildVCs()
+        
         let vc = profileVC
         addChild(vc)
         view.addSubview(vc.view)
@@ -112,6 +114,8 @@ extension ContainerViewController: MenuViewControllerDelegate {
         vc.didMove(toParent: self)
     }
     func addQRcode() {
+        removeChildVCs()
+        
         let vc = qrCodeVC
         addChild(vc)
         view.addSubview(vc.view)
@@ -119,10 +123,23 @@ extension ContainerViewController: MenuViewControllerDelegate {
         vc.didMove(toParent: self)
     }
     func addArchive() {
+        removeChildVCs()
+        
         let vc = archiveVC
         homeVC.addChild(vc)
         homeVC.view.addSubview(vc.view)
         vc.view.frame = view.frame
         vc.didMove(toParent: homeVC)
+    }
+    
+    func removeChildVCs() {
+        profileVC.view.removeFromSuperview()
+        profileVC.removeFromParent()
+
+        qrCodeVC.view.removeFromSuperview()
+        qrCodeVC.removeFromParent()
+
+        archiveVC.view.removeFromSuperview()
+        archiveVC.removeFromParent()
     }
 }

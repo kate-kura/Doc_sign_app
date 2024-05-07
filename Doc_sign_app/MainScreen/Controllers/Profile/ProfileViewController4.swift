@@ -90,6 +90,8 @@ extension ProfileViewController4{
         secondaryLabel.sizeToFit()
         
         codeTextField.placeholder = Resources.Strings.code
+        codeTextField.keyboardType = .numberPad
+        codeTextField.textContentType = .oneTimeCode
         
         nextButton.setTitle(Resources.Strings.confirm)
         nextButton.isEnabled = false
