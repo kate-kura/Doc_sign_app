@@ -123,6 +123,8 @@ enum Resources {
         
         static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
         static let updateUserProfileDetailsURL = baseURL + "/users/physical/profile/update_me"
+        
+        static let getListOfTemplatesURL = baseURL + "/templates/get_list"
     }
     
     enum Keys {

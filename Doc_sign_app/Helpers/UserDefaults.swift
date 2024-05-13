@@ -124,9 +124,6 @@ class DefaultsHelper {
         }
     }
     
-    func saveData() {
-        defaults.synchronize()
-    }
 }
 
 /*

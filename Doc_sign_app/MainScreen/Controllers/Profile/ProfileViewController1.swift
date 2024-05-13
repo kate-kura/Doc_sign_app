@@ -39,11 +39,6 @@ class ProfileViewController1: UIViewController {
             UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
             UserDefaults.standard.synchronize()
         }
-        // if was launched before false
-//        loadImageFromLocal()
-        // if sign in false
-        
-        
     }
     
 }

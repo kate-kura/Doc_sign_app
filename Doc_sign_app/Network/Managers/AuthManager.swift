@@ -193,7 +193,7 @@ class AuthManager {
         }
     }
     
-    func refreshToken(completion: @escaping BooleanCompletion) {
+    func refreshTokens(completion: @escaping BooleanCompletion) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -333,63 +333,51 @@ class AuthManager {
     }
 }
 
-//extension AuthManager {
-//
-//    //Checks if auth token is still valid and refreshes if needed
-//    
-//    func checkAuth() {
-//        
-//        let headers: HTTPHeaders = [
-//            "Authorization": "Bearer \(DefaultsHelper().getString(key: Env.keyCurrentUserAuthToken)!)",
-//            "Accept": "application/json",
-//        ]
-//        
-//        if AppManager.extendedDebugMode() {
-//            Logg.err(.action, "Checking authorization...")
-//        }
-//        
-//        AF.request(Env.getAllAreasURL,
-//                   method: .get,
-//                   headers: headers)
-//        .validate(statusCode: 200..<300)
-//        .response { response in
-//            
-//            //Debugger().logAlamofireResponse(response)
-//            Logg.err(.AFdebug, response.debugDescription as String)
-//            switch response.result {
-//            case .success(_):
-////                if AppManager.extendedDebugMode() {
-////                    let randomInt = Int.random(in: 0..<11)
-////                    if randomInt < 5 { //Мда.
-////                        Logg.err(.success, "Auth token is still valid.")
-////                    }
-////                }
-//                Logg.err(.success, "Auth token is still valid.")
-//            case .failure(let error):
-//                if let statusCode = response.response?.statusCode {
-//                    switch statusCode {
-//                    case 401:
-//                        print("401")
-//                        Logg.err(.debug, "Error 401 - Unauthorized: \(error.localizedDescription)\nToken probably expired.")
-//                        self.refreshTokens { success in
-//                            if !success {
-//                                DefaultsHelper().setBoolean(boolean: false, key: Env.keyCheckIfSignedIn)
-//                                ViewSwitcher().currentView = .signIn
-//                            } //MARK: Return to Sign In if refresh token is dead
-//                        }
-//                    case 500:
-//                        Logg.err(.error, "Error 500 - Internal Server Error: \(error.localizedDescription)\nBackend probably died or app sent some very wrong data.")
-//                    case 502:
-//                        Logg.err(.error, "Error 502 - Server dead or Nginx being a dull: \(error.localizedDescription)\n")
-//                        
-//                        Home(viewSwitcher: ViewSwitcher()).showSignIn502ErrorPopup = true
-//                    default:
-//                        Logg.err(.error, "Unexpected error with status code \(statusCode): \(error.localizedDescription)")
-//                    }
-//                } else {
-//                    Logg.err(.error, "Unexpected error: \(error)")
-//                }
-//            }
-//        }
-//    }
-//}
+extension AuthManager {
+    
+    func checkAuth() {
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
+            "Accept": "application/json",
+        ]
+        
+        if AppManager.extendedDebugMode() {
+            Logg.err(.action, "Checking authorization...")
+        }
+        
+        AF.request(Resources.API.getUserProfileDetailsURL,
+                   method: .get,
+                   headers: headers)
+        .validate(statusCode: 200..<300)
+        .response { response in
+            
+            Logg.err(.AFdebug, response.debugDescription as String)
+            switch response.result {
+            case .success(_):
+                Logg.err(.success, "Auth token is still valid.")
+            case .failure(let error):
+                if let statusCode = response.response?.statusCode {
+                    switch statusCode {
+                    case 401:
+                        print("401")
+                        Logg.err(.debug, "Error 401 - Unauthorized: \(error.localizedDescription)\nToken probably expired.")
+                        self.refreshTokens { success in
+                            if !success {
+                                DefaultsHelper().setBoolean(boolean: false, key: Resources.Keys.keyCheckIfSignedIn)
+                                UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
+                                UserDefaults.standard.synchronize()
+                            } //MARK: Return to Sign In if refresh token is dead
+                        }
+                    case 500:
+                        Logg.err(.error, "Error 500 - Internal Server Error: \(error.localizedDescription)\nBackend probably died or app sent some very wrong data.")
+                    default:
+                        Logg.err(.error, "Unexpected error with status code \(statusCode): \(error.localizedDescription)")
+                    }
+                } else {
+                    Logg.err(.error, "Unexpected error: \(error)")
+                }
+            }
+        }
+    }
+}

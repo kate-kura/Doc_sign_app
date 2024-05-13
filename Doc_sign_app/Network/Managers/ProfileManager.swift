@@ -30,13 +30,12 @@ class ProfileManager {
     
     typealias BooleanCompletion = (Bool) -> Void
     
-    typealias StatusCompletion = (Bool, Int) -> Void
-    
     func getUserProfileDetails(completion: @escaping BooleanCompletion) {
-        let token: String = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
+        
+        AuthManager().checkAuth()
         
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
             "Content-Type": "application/json"
         ]
         
@@ -53,7 +52,6 @@ class ProfileManager {
                 let resultDictionary = JSONResult
                 DefaultsHelper().setString(string: resultDictionary.name, key: Resources.Keys.keyCurrentUserFirstName)
                 DefaultsHelper().setString(string: resultDictionary.surname, key: Resources.Keys.keyCurrentUserLastName)
-                DefaultsHelper().saveData()
                 completion(result)
             case .failure(let error):
                 Logg.err(.error, "Get User Profile Details failed with error \(String(describing: error))")
@@ -64,10 +62,11 @@ class ProfileManager {
     }
     
     func updateUserProfileDetails(firstName: String, lastName: String, completion: @escaping BooleanCompletion) {
-        let token: String = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
+        
+        AuthManager().checkAuth()
         
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
             "Content-Type": "application/json"
         ]
         
