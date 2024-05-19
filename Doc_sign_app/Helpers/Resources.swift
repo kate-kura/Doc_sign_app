@@ -72,6 +72,8 @@ enum Resources {
         static var done = "Готово"
         static var toSign = "Подписать"
         static var openDocument = "Открыть документ"
+        static var openPDF = "Открыть PDF"
+        static var fillForm = "Заполните поля для подписания"
     }
     
     enum Images {
@@ -124,7 +126,15 @@ enum Resources {
         static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
         static let updateUserProfileDetailsURL = baseURL + "/users/physical/profile/update_me"
         
-        static let getListOfTemplatesURL = baseURL + "/templates/get_list"
+        static let getListOfContractsURL = baseURL + "/contracts/get_list"
+        static let getPDFContractURL = baseURL + "/contracts/get_contract_pdf/"
+        static let getContractContentURL = baseURL + "/contracts/get_contract_content/"
+        
+        static let getFormContentURL = baseURL + "/forms/get_form_content/"
+        static let getPDFFormURL = baseURL + "/forms/get_form_pdf/"
+        static let getFormFieldsURL = baseURL + "/forms/get_form_fields/"
+        static let fillFormFieldsURL = baseURL + "/forms/fill_form_fields"
+        
     }
     
     enum Keys {
@@ -141,5 +151,10 @@ enum Resources {
         static let keyCurrentUserProfileImage = "currentUserProfileImage"
         
         static let keyCurrentQRcodeID = "currentQRcodeID"
+        static let keyCurrentQRdocCompany = "currentQRdocCompany"
+        static let keyCurrentQRdocTitle = "currentQRdocTitle"
+        static let keyCurrentFormFields = "currentFormFields"
+        static let keyCurrentBackendFormFields = "currentBackendFormFields"
+        static let keyCurrentFormID = "currentFormID"
     }
 }

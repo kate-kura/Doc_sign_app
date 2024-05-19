@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+//struct ContractModel: Decodable, Identifiable {
+//    let id: Int64
+//    var title: String
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case id = "id"
+//        case title = "title"
+//    }
+//}

@@ -51,6 +51,9 @@
 		C49587F12BCEA9F900DB76B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C49587F02BCEA9F900DB76B1 /* Alamofire */; };
 		C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */; };
 		C4A690672BEA39F500FC0C12 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690662BEA39F400FC0C12 /* ProfileManager.swift */; };
+		C4A690692BF338B800FC0C12 /* ContractsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A690682BF338B800FC0C12 /* ContractsManager.swift */; };
+		C4A6906B2BF3575900FC0C12 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6906A2BF3575900FC0C12 /* DatabaseManager.swift */; };
+		C4A6906D2BF357EB00FC0C12 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6906C2BF357EB00FC0C12 /* Models.swift */; };
 		C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */; };
 		C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */; };
 		C4D5E1B52B4D7F2200F9DAA3 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */; };
@@ -129,6 +132,9 @@
 		C486748B2BA881D400CA47D6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		C4A690662BEA39F400FC0C12 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		C4A690682BF338B800FC0C12 /* ContractsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsManager.swift; sourceTree = "<group>"; };
+		C4A6906A2BF3575900FC0C12 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		C4A6906C2BF357EB00FC0C12 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		C4D5E1AB2B4D673600F9DAA3 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		C4D5E1B22B4D7EEC00F9DAA3 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C4D5E1B42B4D7F2200F9DAA3 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
@@ -404,6 +410,9 @@
 			children = (
 				C4425E7C2BC7E04200038D74 /* AuthManager.swift */,
 				C4A690662BEA39F400FC0C12 /* ProfileManager.swift */,
+				C4A690682BF338B800FC0C12 /* ContractsManager.swift */,
+				C4A6906A2BF3575900FC0C12 /* DatabaseManager.swift */,
+				C4A6906C2BF357EB00FC0C12 /* Models.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -549,6 +558,7 @@
 				C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */,
 				C4786EAE2BDA83FE00182397 /* CustomBackButton.swift in Sources */,
 				C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */,
+				C4A690692BF338B800FC0C12 /* ContractsManager.swift in Sources */,
 				C4786EA72BDA83FE00182397 /* CustomQRCodeButton.swift in Sources */,
 				C4D5E1BE2B4D83C700F9DAA3 /* UIColors.swift in Sources */,
 				C4786EA52BDA83FE00182397 /* CustomSideButton.swift in Sources */,
@@ -570,6 +580,7 @@
 				C4425E842BC7E80400038D74 /* Logger.swift in Sources */,
 				C4A690672BEA39F500FC0C12 /* ProfileManager.swift in Sources */,
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
+				C4A6906D2BF357EB00FC0C12 /* Models.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
 				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
 				C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */,
@@ -581,6 +592,7 @@
 				C48674892BA8815C00CA47D6 /* MenuViewController.swift in Sources */,
 				C4425E792BC40E2F00038D74 /* ProfileViewController2.swift in Sources */,
 				C4D5E1B32B4D7EEC00F9DAA3 /* RegisterController.swift in Sources */,
+				C4A6906B2BF3575900FC0C12 /* DatabaseManager.swift in Sources */,
 				C4425E8A2BC8195B00038D74 /* AlertManager.swift in Sources */,
 				C4786EAD2BDA83FE00182397 /* CustomPhotoButton.swift in Sources */,
 				C46DA9872B1F445100BA694F /* AppDelegate.swift in Sources */,

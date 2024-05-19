@@ -76,16 +76,22 @@ class DefaultsHelper {
         defaults.set(boolean, forKey: key)
     }
     
+    func setStringArray(stringArray: [String], key: String) {
+        defaults.set(stringArray, forKey: key)
+    }
+    
     /**
      Some more universal method to save String/Integer/Boolean type value for specified key. _Caveat - pass only one arg because only first one will be saved._
      */
-    func set(string: String? = nil, integer: Int? = nil, boolean: Bool? = nil, key: String) { //Attempt to create a universal one
+    func set(string: String? = nil, integer: Int? = nil, boolean: Bool? = nil, stringArray: [String]? = nil, key: String) { //Attempt to create a universal one
         if string != nil {
             defaults.set(string, forKey: key)
         } else if integer != nil {
             defaults.set(integer, forKey: key)
         } else if boolean != nil {
             defaults.set(boolean, forKey: key)
+        } else if stringArray != nil {
+            defaults.set(stringArray, forKey: key)
         }
     }
     
@@ -108,6 +114,10 @@ class DefaultsHelper {
      */
     func getBoolean(key: String) -> Bool? {
         return defaults.bool(forKey: key)
+    }
+    
+    func getStringArray(key: String) -> [String]? {
+        return defaults.stringArray(forKey: key)
     }
     
     //    typealias StringOrBoolean = (string: String?, integer: Int?, boolean: Bool?) //Hello again, tuple

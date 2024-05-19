@@ -167,9 +167,28 @@ extension QRcodeViewController {
     }
     
     @objc private func didTapNext() {
-        let vc = DocFromQRcodeViewController()
-        captureSession.stopRunning()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        
+        ContractsManager().getFormContentFromQR(completion: { result in
+            if result {
+                ContractsManager().getPDFForm(completion: {result in
+                    if result {
+                        let vc = DocFromQRcodeViewController()
+                        self.captureSession.stopRunning()
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: false, completion: nil)
+                    } else {
+                        Logg.err(.error, "Something went wrong during getting PDF Form.")
+                    }
+                })
+            } else {
+                Logg.err(.error, "Something went wrong during getting Form Content.")
+            }
+        })
+        
+        ContractsManager().getFormFields(completion: { result in
+            if result {} else {
+                Logg.err(.error, "Something went wrong during getting Form Fields.")
+            }
+        })
     }
 }

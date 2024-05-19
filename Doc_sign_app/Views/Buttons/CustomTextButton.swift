@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomTextButton: UIButton {
     
-    private let label = UILabel()
+    let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
