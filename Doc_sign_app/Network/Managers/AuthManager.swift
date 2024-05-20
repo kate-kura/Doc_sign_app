@@ -335,16 +335,14 @@ class AuthManager {
 
 extension AuthManager {
     
-    func checkAuth() {
+    func checkAuth(completion: @escaping BooleanCompletion) {
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
             "Accept": "application/json",
         ]
         
-        if AppManager.extendedDebugMode() {
-            Logg.err(.action, "Checking authorization...")
-        }
+        Logg.err(.action, "Checking authorization...")
         
         AF.request(Resources.API.getUserProfileDetailsURL,
                    method: .get,
@@ -352,10 +350,11 @@ extension AuthManager {
         .validate(statusCode: 200..<300)
         .response { response in
             
-            Logg.err(.AFdebug, response.debugDescription as String)
+//            Logg.err(.AFdebug, response.debugDescription as String)
             switch response.result {
             case .success(_):
                 Logg.err(.success, "Auth token is still valid.")
+                completion(true)
             case .failure(let error):
                 if let statusCode = response.response?.statusCode {
                     switch statusCode {
@@ -368,14 +367,18 @@ extension AuthManager {
                                 UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
                                 UserDefaults.standard.synchronize()
                             } //MARK: Return to Sign In if refresh token is dead
+                            completion(success)
                         }
                     case 500:
                         Logg.err(.error, "Error 500 - Internal Server Error: \(error.localizedDescription)\nBackend probably died or app sent some very wrong data.")
+                        completion(false)
                     default:
                         Logg.err(.error, "Unexpected error with status code \(statusCode): \(error.localizedDescription)")
+                        completion(false)
                     }
                 } else {
                     Logg.err(.error, "Unexpected error: \(error)")
+                    completion(false)
                 }
             }
         }

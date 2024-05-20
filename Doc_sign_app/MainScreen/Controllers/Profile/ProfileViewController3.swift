@@ -171,7 +171,7 @@ extension ProfileViewController3 {
         mailTextField.text = email
         mailTextField.keyboardType = .emailAddress
         mailTextField.textContentType = .emailAddress
-        mailTextField.isEnabled = false
+//        mailTextField.isEnabled = false
         
         nextButton.setTitle(Resources.Strings.save)
         nextButton.isEnabled = false
@@ -185,7 +185,7 @@ extension ProfileViewController3 {
         
         guard let name = self.nameTextField.text else {return}
         guard let surname = self.surnameTextField.text else {return}
-//        guard let email = self.mail.text else {return}
+        guard let email = self.mailTextField.text else {return}
         
         // Name check
         if !Validator.isNameValid(for: name) {
@@ -199,13 +199,13 @@ extension ProfileViewController3 {
             return
         }
         
-//        // Email check
-//        if !Validator.isValidEmail(for: email) {
-//            AlertManager.showInvalidEmailAlert(on: self)
-//            return
-//        }
+        // Email check
+        if !Validator.isValidEmail(for: email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
         
-        ProfileManager().updateUserProfileDetails(firstName: name, lastName: surname, completion: { result in
+        ProfileManager().updateUserProfileDetails(firstName: name, lastName: surname, email: email, completion: { result in
             if result {
                 let vc = ContainerViewController()
                 vc.modalPresentationStyle = .fullScreen
@@ -232,9 +232,9 @@ extension ProfileViewController3: UITextFieldDelegate {
     }
     
     func checkTextFields() {
-        guard let name = nameTextField.text, let surname = surnameTextField.text/*, let mail = mail.text*/ else { return }
+        guard let name = nameTextField.text, let surname = surnameTextField.text, let mail = mailTextField.text else { return }
 
-        if name != firstName || surname != lastName /*|| mail != email*/ {
+        if name != firstName || surname != lastName || mail != email {
             nextButton.isEnabled = true
         } else {
             nextButton.isEnabled = false

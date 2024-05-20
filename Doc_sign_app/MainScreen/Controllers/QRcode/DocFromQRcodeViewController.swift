@@ -74,11 +74,11 @@ extension DocFromQRcodeViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
 
-            openPDFButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            openPDFButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
             openPDFButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             openPDFButton.widthAnchor.constraint(equalToConstant: 120),
             
-            secondaryLabel.topAnchor.constraint(equalTo: openPDFButton.bottomAnchor, constant: 4),
+            secondaryLabel.topAnchor.constraint(equalTo: openPDFButton.bottomAnchor, constant: 8),
             secondaryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             secondaryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             

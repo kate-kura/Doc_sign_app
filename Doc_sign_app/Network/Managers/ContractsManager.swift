@@ -64,17 +64,32 @@ class ContractsManager {
     
     struct FormFieldsDecodable: Decodable {
         let formID: Int
-        let initiatingPartyKeys: [String]
+        let formFields: [String]
 
         enum CodingKeys: String, CodingKey {
             case formID = "form_id"
-            case initiatingPartyKeys = "initiating_party_keys"
+            case formFields = "form_fields"
         }
     }
     
     typealias BooleanCompletion = (Bool) -> Void
     
     typealias StatusCompletion = (Bool, Int) -> Void
+    
+//    AuthManager().checkAuth{ success in
+//        if success {
+//            
+//        } else {
+//            Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
+//            let result = false
+//            completion(result)
+//        }
+//    }
+    
+    
+    
+    
+    
     
 //    func getListOfContracts(completion: @escaping BooleanCompletion) {
 //        
@@ -196,30 +211,36 @@ class ContractsManager {
     
     func getFormContentFromQR(completion: @escaping BooleanCompletion) {
         
-        AuthManager().checkAuth()
-   
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
-            "Content-Type": "application/json"
-        ]
-        
-        Logg.err(.action, "Performing \"Get Form Content\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
-        
-        AF.request (Resources.API.getFormContentURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
-                   method: .get,
-                   headers: headers).responseDecodable(of: FormContentDecodable.self) {response in
-            Logg.err(.AFdebug, response.debugDescription as String)
-            switch response.result {
-            case .success(let JSONResult):
-                Logg.err(.success, "Form Content successfully got.")
-                let result = true
-                let resultDictionary = JSONResult
-                DefaultsHelper().setString(string: resultDictionary.firstPartyName, key: Resources.Keys.keyCurrentQRdocCompany)
-                DefaultsHelper().setString(string: resultDictionary.title, key: Resources.Keys.keyCurrentQRdocTitle)
-                DefaultsHelper().setStringArray(stringArray: resultDictionary.formFields, key: Resources.Keys.keyCurrentFormFields)
-                completion(result)
-            case .failure(let error):
-                Logg.err(.error, "Get Form Content failed with error \(String(describing: error))")
+        AuthManager().checkAuth{ success in
+            if success {
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
+                    "Content-Type": "application/json"
+                ]
+                
+                Logg.err(.action, "Performing \"Get Form Content\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
+                
+                AF.request (Resources.API.getFormContentURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
+                           method: .get,
+                           headers: headers).responseDecodable(of: FormContentDecodable.self) {response in
+                    Logg.err(.AFdebug, response.debugDescription as String)
+                    switch response.result {
+                    case .success(let JSONResult):
+                        Logg.err(.success, "Form Content successfully got.")
+                        let result = true
+                        let resultDictionary = JSONResult
+                        DefaultsHelper().setString(string: resultDictionary.firstPartyName, key: Resources.Keys.keyCurrentQRdocCompany)
+                        DefaultsHelper().setString(string: resultDictionary.title, key: Resources.Keys.keyCurrentQRdocTitle)
+                        DefaultsHelper().setStringArray(stringArray: resultDictionary.formFields, key: Resources.Keys.keyCurrentFormFields)
+                        completion(result)
+                    case .failure(let error):
+                        Logg.err(.error, "Get Form Content failed with error \(String(describing: error))")
+                        let result = false
+                        completion(result)
+                    }
+                }
+            } else {
+                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
                 let result = false
                 completion(result)
             }
@@ -228,31 +249,37 @@ class ContractsManager {
     
     func getPDFForm(completion: @escaping BooleanCompletion) {
         
-        AuthManager().checkAuth()
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
-        ]
-        
-        Logg.err(.action, "Performing \"Get PDF Form\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
-        
-        let destination: DownloadRequest.Destination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("contract\(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!).pdf")
+        AuthManager().checkAuth{ success in
+            if success {
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!
+                ]
+                
+                Logg.err(.action, "Performing \"Get PDF Form\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
+                
+                let destination: DownloadRequest.Destination = { _, _ in
+                    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                    let fileURL = documentsURL.appendingPathComponent("contract\(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!).pdf")
 
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-        
-        AF.download(Resources.API.getPDFFormURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
-                    headers: headers,
-                    to: destination).responseDecodable(of: ContractsResultDecodable.self) {response in
-            Logg.err(.AFdebug, response.debugDescription as String)
-            if response.response?.statusCode == 200 {
-                Logg.err(.success, "PDF Form successfully downloaded at: \(response.fileURL?.path ?? "")")
-                let result = true
-                completion(result)
+                    return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+                }
+                
+                AF.download(Resources.API.getPDFFormURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
+                            headers: headers,
+                            to: destination).responseDecodable(of: ContractsResultDecodable.self) {response in
+                    Logg.err(.AFdebug, response.debugDescription as String)
+                    if response.response?.statusCode == 200 {
+                        Logg.err(.success, "PDF Form successfully downloaded at: \(response.fileURL?.path ?? "")")
+                        let result = true
+                        completion(result)
+                    } else {
+                        Logg.err(.error, "Get PDF Form failed with error")
+                        let result = false
+                        completion(result)
+                    }
+                }
             } else {
-                Logg.err(.error, "Get PDF Form failed with error")
+                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
                 let result = false
                 completion(result)
             }
@@ -261,29 +288,35 @@ class ContractsManager {
     
     func getFormFields(completion: @escaping BooleanCompletion) {
     
-        AuthManager().checkAuth()
-   
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
-            "Content-Type": "application/json"
-        ]
-        
-        Logg.err(.action, "Performing \"Get Form Fields\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
-        
-        AF.request (Resources.API.getFormFieldsURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
-                   method: .get,
-                   headers: headers).responseDecodable(of: FormFieldsDecodable.self) {response in
-            Logg.err(.AFdebug, response.debugDescription as String)
-            switch response.result {
-            case .success(let JSONResult):
-                Logg.err(.success, "Form Fields successfully got.")
-                let result = true
-                let resultDictionary = JSONResult
-                DefaultsHelper().setInteger(integer: resultDictionary.formID, key: Resources.Keys.keyCurrentFormID)
-                DefaultsHelper().setStringArray(stringArray: resultDictionary.initiatingPartyKeys, key: Resources.Keys.keyCurrentBackendFormFields)
-                completion(result)
-            case .failure(let error):
-                Logg.err(.error, "Get Form Content failed with error \(String(describing: error))")
+        AuthManager().checkAuth{ success in
+            if success {
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
+                    "Content-Type": "application/json"
+                ]
+                
+                Logg.err(.action, "Performing \"Get Form Fields\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
+                
+                AF.request (Resources.API.getFormFieldsURL + DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!,
+                           method: .get,
+                           headers: headers).responseDecodable(of: FormFieldsDecodable.self) {response in
+                    Logg.err(.AFdebug, response.debugDescription as String)
+                    switch response.result {
+                    case .success(let JSONResult):
+                        Logg.err(.success, "Form Fields successfully got.")
+                        let result = true
+                        let resultDictionary = JSONResult
+                        DefaultsHelper().setInteger(integer: resultDictionary.formID, key: Resources.Keys.keyCurrentFormID)
+                        DefaultsHelper().setStringArray(stringArray: resultDictionary.formFields, key: Resources.Keys.keyCurrentBackendFormFields)
+                        completion(result)
+                    case .failure(let error):
+                        Logg.err(.error, "Get Form Content failed with error \(String(describing: error))")
+                        let result = false
+                        completion(result)
+                    }
+                }
+            } else {
+                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
                 let result = false
                 completion(result)
             }
@@ -292,39 +325,44 @@ class ContractsManager {
     
     func fillFormFields(respondingPartyKeys: [String: String], completion: @escaping BooleanCompletion) {
         
-        AuthManager().checkAuth()
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
-            "Content-Type": "application/json"
-        ]
-        
-        struct FormFieldsParameters: Encodable {
-            let form_id: Int
-            let responding_party_keys: [String: String]
-        }
-        
-        let parameters = FormFieldsParameters(form_id: DefaultsHelper().getInteger(key: Resources.Keys.keyCurrentFormID)!, responding_party_keys: respondingPartyKeys)
-        
-        Logg.err(.action, "Performing \"Fill Form Fields\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
-        
-        AF.request(Resources.API.fillFormFieldsURL,
-                   method: .post,
-                   parameters: parameters,
-                   encoder: JSONParameterEncoder.default,
-                   headers: headers).responseDecodable(of: ContractsResultDecodable.self) {response in
-            Logg.err(.AFdebug, response.debugDescription as String)
-            if response.response?.statusCode == 200 {
-                Logg.err(.success, "Form Fields successfully filled.")
-                let result = true
-                completion(result)
+        AuthManager().checkAuth{ success in
+            if success {
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserAuthToken)!,
+                    "Content-Type": "application/json"
+                ]
+                
+                struct FormFieldsParameters: Encodable {
+                    let form_id: Int
+                    let responding_party_keys: [String: String]
+                }
+                
+                let parameters = FormFieldsParameters(form_id: DefaultsHelper().getInteger(key: Resources.Keys.keyCurrentFormID)!, responding_party_keys: respondingPartyKeys)
+                
+                Logg.err(.action, "Performing \"Fill Form Fields\" request for \(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!)...")
+                
+                AF.request(Resources.API.fillFormFieldsURL,
+                           method: .post,
+                           parameters: parameters,
+                           encoder: JSONParameterEncoder.default,
+                           headers: headers).responseDecodable(of: ContractsResultDecodable.self) {response in
+                    Logg.err(.AFdebug, response.debugDescription as String)
+                    if response.response?.statusCode == 200 {
+                        Logg.err(.success, "Form Fields successfully filled.")
+                        let result = true
+                        completion(result)
+                    } else {
+                        Logg.err(.error, "Fill Form Content failed with error")
+                        let result = false
+                        completion(result)
+                    }
+                }
             } else {
-                Logg.err(.error, "Fill Form Content failed with error")
+                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
                 let result = false
                 completion(result)
             }
         }
     }
-    
 }
 

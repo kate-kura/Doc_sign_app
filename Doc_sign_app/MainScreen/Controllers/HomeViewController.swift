@@ -34,8 +34,6 @@ class HomeViewController: UIViewController {
         sideButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(didTapQRCodeButton), for: .touchUpInside)
     }
-
-
 }
 
 extension HomeViewController {
