@@ -16,6 +16,8 @@
 		C4425E842BC7E80400038D74 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E832BC7E80400038D74 /* Logger.swift */; };
 		C4425E882BC818B200038D74 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E872BC818B200038D74 /* Validator.swift */; };
 		C4425E8A2BC8195B00038D74 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E892BC8195B00038D74 /* AlertManager.swift */; };
+		C45269FD2BFDC8B0004739F1 /* CustomPopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45269FC2BFDC8B0004739F1 /* CustomPopupButton.swift */; };
+		C45269FF2BFDDD21004739F1 /* BottomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45269FE2BFDDD21004739F1 /* BottomMenuViewController.swift */; };
 		C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */; };
 		C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE212B67D6E300D05DEF /* RegisterController3.swift */; };
 		C46BCE262B67D77100D05DEF /* ForgotPasswordController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */; };
@@ -63,6 +65,8 @@
 		C4D5E1CA2B544E3400F9DAA3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1C92B544E3400F9DAA3 /* UIView.swift */; };
 		C4DB2B502BC955570064375B /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B4F2BC955570064375B /* AuthModels.swift */; };
 		C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B592BCE7D420064375B /* Debugger.swift */; };
+		C4DD67F82BFB592000B64E18 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD67F72BFB592000B64E18 /* CustomCell.swift */; };
+		C4DD67FA2BFC819700B64E18 /* CustomCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD67F92BFC819700B64E18 /* CustomCellButton.swift */; };
 		C4E9BB192BC9099E001A758F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E9BB182BC9099E001A758F /* UserDefaults.swift */; };
 		C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E9BB1A2BC90E58001A758F /* AppManager.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +98,8 @@
 		C4425E832BC7E80400038D74 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C4425E872BC818B200038D74 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C4425E892BC8195B00038D74 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C45269FC2BFDC8B0004739F1 /* CustomPopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupButton.swift; sourceTree = "<group>"; };
+		C45269FE2BFDDD21004739F1 /* BottomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuViewController.swift; sourceTree = "<group>"; };
 		C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController2.swift; sourceTree = "<group>"; };
 		C46BCE212B67D6E300D05DEF /* RegisterController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController3.swift; sourceTree = "<group>"; };
 		C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController2.swift; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 		C4D5E1C92B544E3400F9DAA3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C4DB2B4F2BC955570064375B /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
 		C4DB2B592BCE7D420064375B /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
+		C4DD67F72BFB592000B64E18 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		C4DD67F92BFC819700B64E18 /* CustomCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellButton.swift; sourceTree = "<group>"; };
 		C4E9BB182BC9099E001A758F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C4E9BB1A2BC90E58001A758F /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +188,7 @@
 				C486748B2BA881D400CA47D6 /* HomeViewController.swift */,
 				C48674882BA8815C00CA47D6 /* MenuViewController.swift */,
 				C48674862BA8810300CA47D6 /* ContainerViewController.swift */,
+				C45269FE2BFDDD21004739F1 /* BottomMenuViewController.swift */,
 				C4DB2B552BCE788B0064375B /* Profile */,
 				C4DB2B562BCE78E80064375B /* QRcode */,
 				C4DB2B572BCE78F00064375B /* Archive */,
@@ -262,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				C4786E992BDA83FE00182397 /* CustomSideButton.swift */,
+				C4DD67F92BFC819700B64E18 /* CustomCellButton.swift */,
 				C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */,
 				C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */,
 				C4786E9C2BDA83FE00182397 /* CustomWhiteBackButton.swift */,
@@ -273,6 +283,7 @@
 				C4786EA22BDA83FE00182397 /* CustomBackButton.swift */,
 				C4786EA32BDA83FE00182397 /* CustomAddButton.swift */,
 				C4786EA42BDA83FE00182397 /* CustomEditDataButton.swift */,
+				C45269FC2BFDC8B0004739F1 /* CustomPopupButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 				C4786EB12BDA840500182397 /* TextFields */,
 				C4786E982BDA83FE00182397 /* Buttons */,
 				C4A690642BE8F8DC00FC0C12 /* CustomBackgroundView.swift */,
+				C4DD67F72BFB592000B64E18 /* CustomCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,13 +591,16 @@
 				C4D5E1AC2B4D673700F9DAA3 /* LogInController.swift in Sources */,
 				C4425E842BC7E80400038D74 /* Logger.swift in Sources */,
 				C4A690672BEA39F500FC0C12 /* ProfileManager.swift in Sources */,
+				C45269FF2BFDDD21004739F1 /* BottomMenuViewController.swift in Sources */,
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
 				C4A6906D2BF357EB00FC0C12 /* Models.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
 				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
 				C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */,
+				C45269FD2BFDC8B0004739F1 /* CustomPopupButton.swift in Sources */,
 				C4425E6D2BC3DB9500038D74 /* ArchiveViewController.swift in Sources */,
 				C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */,
+				C4DD67F82BFB592000B64E18 /* CustomCell.swift in Sources */,
 				C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */,
 				C4DB2B502BC955570064375B /* AuthModels.swift in Sources */,
 				C4786EAA2BDA83FE00182397 /* CustomArchiveButton.swift in Sources */,
@@ -602,6 +617,7 @@
 				C4425E7D2BC7E04200038D74 /* AuthManager.swift in Sources */,
 				C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */,
 				C4786EB02BDA83FE00182397 /* CustomEditDataButton.swift in Sources */,
+				C4DD67FA2BFC819700B64E18 /* CustomCellButton.swift in Sources */,
 				C4786EBD2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift in Sources */,
 				C4786EAF2BDA83FE00182397 /* CustomAddButton.swift in Sources */,
 				C4786EAB2BDA83FE00182397 /* CustomTextButton.swift in Sources */,

@@ -74,6 +74,9 @@ enum Resources {
         static var openDocument = "Открыть документ"
         static var openPDF = "Открыть PDF"
         static var fillForm = "Заполните поля для подписания"
+        static var homeVCTitle = "Подписанные договоры"
+        static var watch = "Просмотреть"
+        static var export = "Экспорт в PDF"
     }
     
     enum Images {
@@ -90,6 +93,8 @@ enum Resources {
         static var eye = UIImage(systemName: "eye")
         static var eyeClosed = UIImage(systemName: "eye.slash")
         static var check = UIImage(systemName: "checkmark")
+        static var ellipsis = UIImage(systemName: "ellipsis")
+        static var share = UIImage(systemName: "square.and.arrow.up")
         
     }
     

@@ -18,7 +18,9 @@ class HomeViewController: UIViewController {
     let sideButton = CustomSideButton()
     let searchTextField = CustomTextField()
     let logoImageView = UIImageView()
+    let primaryLabel = UILabel()
     let secondaryLabel = UILabel()
+    let tableView = UITableView()
     let addButton = CustomAddButton()
 
     override func viewDidLoad() {
@@ -41,10 +43,12 @@ extension HomeViewController {
     func addViews() {
         view.addSubview(sideButton)
         view.addSubview(searchTextField)
-
+        
         view.addSubview(logoImageView)
         view.addSubview(secondaryLabel)
-
+        view.addSubview(primaryLabel)
+        view.addSubview(tableView)
+        
         view.addSubview(addButton)
 
     }
@@ -72,10 +76,19 @@ extension HomeViewController {
             secondaryLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 16),
             secondaryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
 
+            primaryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            primaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            
             addButton.widthAnchor.constraint(equalToConstant: 56),
             addButton.heightAnchor.constraint(equalToConstant: 56),
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
         ])
 
     }
@@ -87,9 +100,10 @@ extension HomeViewController {
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         addButton.translatesAutoresizingMaskIntoConstraints = false
 
-        
         searchTextField.placeholder = Resources.Strings.search
         searchTextField.textColor = Resources.Colors.secondaryLabelColor
         
@@ -115,9 +129,36 @@ extension HomeViewController {
         secondaryLabel.font = Resources.Fonts.helveticaRegular(with: 16)
         secondaryLabel.numberOfLines = 2
         secondaryLabel.sizeToFit()
+        
+        primaryLabel.textColor = Resources.Colors.primaryLabelColor
+        primaryLabel.text = Resources.Strings.homeVCTitle
+        primaryLabel.textAlignment = .center
+        primaryLabel.font = Resources.Fonts.helveticaRegular(with: 22)
+        primaryLabel.numberOfLines = 1
+        primaryLabel.sizeToFit()
 
+        tableView.backgroundColor = Resources.Colors.background
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CustomCell.self, 
+                           forCellReuseIdentifier: "CustomCellIdentifier")
+        tableView.separatorColor = .clear
+
+        if tableView.numberOfRows(inSection: 0) == 0 {
+            logoImageView.isHidden = false
+            secondaryLabel.isHidden = false
+            primaryLabel.isHidden = true
+            tableView.isHidden = true
+        } else {
+            logoImageView.isHidden = true
+            secondaryLabel.isHidden = true
+            primaryLabel.isHidden = false
+            tableView.isHidden = false
+        }
+        
     }
 
+    
     @objc func didTapMenuButton() {
         delegate?.didTapMenuButton()
     }
@@ -126,5 +167,36 @@ extension HomeViewController {
         let vc = QRcodeViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier", for: indexPath) as! CustomCell
+        cell.titleLabel.text = "Договор аренды"
+        cell.companyLabel.text = "Пупкин Василий Иванович"
+        cell.actionButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        
+        return cell
+    }
+    @objc func buttonTapped(_ sender: UIButton) {
+        let vc = BottomMenuViewController()
+        if let sheet = vc.sheetPresentationController{
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 16
+        }
+        present(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 152
     }
 }
