@@ -9,13 +9,10 @@
 import Foundation
 import CoreData
 
+@objc(Contract)
+public class Contract: NSManagedObject {}
 
 extension Contract {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Contract> {
-        return NSFetchRequest<Contract>(entityName: "Contract")
-    }
-
     @NSManaged public var id: Int16
     @NSManaged public var title: String?
     @NSManaged public var companyName: String?

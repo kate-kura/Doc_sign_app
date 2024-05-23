@@ -18,6 +18,8 @@
 		C4425E8A2BC8195B00038D74 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4425E892BC8195B00038D74 /* AlertManager.swift */; };
 		C45269FD2BFDC8B0004739F1 /* CustomPopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45269FC2BFDC8B0004739F1 /* CustomPopupButton.swift */; };
 		C45269FF2BFDDD21004739F1 /* BottomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45269FE2BFDDD21004739F1 /* BottomMenuViewController.swift */; };
+		C4526A022BFDFB76004739F1 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4526A002BFDFB76004739F1 /* CoreData.xcdatamodeld */; };
+		C4526A062BFE000E004739F1 /* Contract+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4526A042BFE000E004739F1 /* Contract+CoreDataProperties.swift */; };
 		C46BCE202B67D6D200D05DEF /* RegisterController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */; };
 		C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE212B67D6E300D05DEF /* RegisterController3.swift */; };
 		C46BCE262B67D77100D05DEF /* ForgotPasswordController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */; };
@@ -26,9 +28,6 @@
 		C46DA9892B1F445100BA694F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA9882B1F445100BA694F /* SceneDelegate.swift */; };
 		C46DA9902B1F445300BA694F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46DA98F2B1F445300BA694F /* Assets.xcassets */; };
 		C46DA9932B1F445300BA694F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C46DA9912B1F445300BA694F /* LaunchScreen.storyboard */; };
-		C46DA9A82B1F445400BA694F /* Doc_sign_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA9A72B1F445400BA694F /* Doc_sign_appUITests.swift */; };
-		C46DA9AA2B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA9A92B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift */; };
-		C46DA9B62B1F447C00BA694F /* Doc_sign_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DA99D2B1F445400BA694F /* Doc_sign_appTests.swift */; };
 		C4786EA52BDA83FE00182397 /* CustomSideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E992BDA83FE00182397 /* CustomSideButton.swift */; };
 		C4786EA62BDA83FE00182397 /* CustomMyDataButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */; };
 		C4786EA72BDA83FE00182397 /* CustomQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */; };
@@ -100,6 +99,8 @@
 		C4425E892BC8195B00038D74 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C45269FC2BFDC8B0004739F1 /* CustomPopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupButton.swift; sourceTree = "<group>"; };
 		C45269FE2BFDDD21004739F1 /* BottomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuViewController.swift; sourceTree = "<group>"; };
+		C4526A012BFDFB76004739F1 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		C4526A042BFE000E004739F1 /* Contract+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Contract+CoreDataProperties.swift"; path = "Doc_sign_app/Contract+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C46BCE1F2B67D6D200D05DEF /* RegisterController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController2.swift; sourceTree = "<group>"; };
 		C46BCE212B67D6E300D05DEF /* RegisterController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController3.swift; sourceTree = "<group>"; };
 		C46BCE252B67D77100D05DEF /* ForgotPasswordController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController2.swift; sourceTree = "<group>"; };
@@ -111,10 +112,7 @@
 		C46DA9922B1F445300BA694F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C46DA9942B1F445400BA694F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C46DA9992B1F445400BA694F /* Doc_sign_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Doc_sign_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C46DA99D2B1F445400BA694F /* Doc_sign_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doc_sign_appTests.swift; sourceTree = "<group>"; };
 		C46DA9A32B1F445400BA694F /* Doc_sign_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Doc_sign_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C46DA9A72B1F445400BA694F /* Doc_sign_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doc_sign_appUITests.swift; sourceTree = "<group>"; };
-		C46DA9A92B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doc_sign_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C4786E992BDA83FE00182397 /* CustomSideButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSideButton.swift; sourceTree = "<group>"; };
 		C4786E9A2BDA83FE00182397 /* CustomMyDataButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMyDataButton.swift; sourceTree = "<group>"; };
 		C4786E9B2BDA83FE00182397 /* CustomQRCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQRCodeButton.swift; sourceTree = "<group>"; };
@@ -219,9 +217,9 @@
 		C46DA97A2B1F445100BA694F = {
 			isa = PBXGroup;
 			children = (
+				C4526A042BFE000E004739F1 /* Contract+CoreDataProperties.swift */,
+				C4526A002BFDFB76004739F1 /* CoreData.xcdatamodeld */,
 				C46DA9852B1F445100BA694F /* Doc_sign_app */,
-				C46DA99C2B1F445400BA694F /* Doc_sign_appTests */,
-				C46DA9A62B1F445400BA694F /* Doc_sign_appUITests */,
 				C46DA9842B1F445100BA694F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -248,23 +246,6 @@
 				C4D5E1C42B54495700F9DAA3 /* SupportingFiles */,
 			);
 			path = Doc_sign_app;
-			sourceTree = "<group>";
-		};
-		C46DA99C2B1F445400BA694F /* Doc_sign_appTests */ = {
-			isa = PBXGroup;
-			children = (
-				C46DA99D2B1F445400BA694F /* Doc_sign_appTests.swift */,
-			);
-			path = Doc_sign_appTests;
-			sourceTree = "<group>";
-		};
-		C46DA9A62B1F445400BA694F /* Doc_sign_appUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C46DA9A72B1F445400BA694F /* Doc_sign_appUITests.swift */,
-				C46DA9A92B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift */,
-			);
-			path = Doc_sign_appUITests;
 			sourceTree = "<group>";
 		};
 		C4786E982BDA83FE00182397 /* Buttons */ = {
@@ -576,6 +557,7 @@
 				C4786EA52BDA83FE00182397 /* CustomSideButton.swift in Sources */,
 				C4425E882BC818B200038D74 /* Validator.swift in Sources */,
 				C4D5E1B72B4D805A00F9DAA3 /* LoginORregController.swift in Sources */,
+				C4526A062BFE000E004739F1 /* Contract+CoreDataProperties.swift in Sources */,
 				C4425E7B2BC411A500038D74 /* ProfileViewController3.swift in Sources */,
 				C4786EA62BDA83FE00182397 /* CustomMyDataButton.swift in Sources */,
 				C46BCE262B67D77100D05DEF /* ForgotPasswordController2.swift in Sources */,
@@ -597,6 +579,7 @@
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
 				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
 				C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */,
+				C4526A022BFDFB76004739F1 /* CoreData.xcdatamodeld in Sources */,
 				C45269FD2BFDC8B0004739F1 /* CustomPopupButton.swift in Sources */,
 				C4425E6D2BC3DB9500038D74 /* ArchiveViewController.swift in Sources */,
 				C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */,
@@ -628,7 +611,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46DA9B62B1F447C00BA694F /* Doc_sign_appTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,8 +618,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46DA9AA2B1F445400BA694F /* Doc_sign_appUITestsLaunchTests.swift in Sources */,
-				C46DA9A82B1F445400BA694F /* Doc_sign_appUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +956,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		C4526A002BFDFB76004739F1 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4526A012BFDFB76004739F1 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = C4526A012BFDFB76004739F1 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C46DA97B2B1F445100BA694F /* Project object */;
 }
