@@ -194,6 +194,7 @@ extension ProfileViewController2{
         
         DefaultsHelper().removePersistentDomain()
         DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckFirstLaunch)
+        DatabaseManager.shared.deleteAllContracts()
         
         let vc = LoginORRegisrationViewController()
         vc.modalPresentationStyle = .fullScreen

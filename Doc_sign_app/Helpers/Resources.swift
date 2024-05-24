@@ -131,8 +131,8 @@ enum Resources {
         static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
         static let updateUserProfileDetailsURL = baseURL + "/users/physical/profile/update_me"
         
-        static let getListOfContractsURL = baseURL + "/contracts/get_list"
-        static let getPDFContractURL = baseURL + "/contracts/get_contract_pdf/"
+        static let getListOfContractsURL = baseURL + "/contracts/get_list_for_user"
+        static let getPDFContractURL = baseURL + "/contracts/get_contract_pdf_v2/"
         static let getContractContentURL = baseURL + "/contracts/get_contract_content/"
         
         static let getFormContentURL = baseURL + "/forms/get_form_content/"
@@ -161,5 +161,6 @@ enum Resources {
         static let keyCurrentFormFields = "currentFormFields"
         static let keyCurrentBackendFormFields = "currentBackendFormFields"
         static let keyCurrentFormID = "currentFormID"
+        static let keyCurrentContractID = "currentContractID"
     }
 }

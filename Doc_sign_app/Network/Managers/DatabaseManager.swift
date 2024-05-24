@@ -21,7 +21,7 @@ public final class DatabaseManager: NSObject {
     }
     
     //из кью ар кода и при авторизации список контрактов
-    public func createContract(_ id: Int16, title: String, companyName: String) {
+    public func createContract(_ id: Int64, title: String, companyName: String) {
         guard let contractEntityDecsription = NSEntityDescription.entity(forEntityName: "Contract", in: context) else {return}
         let contract = Contract(entity: contractEntityDecsription, insertInto: context)
         contract.id = id
@@ -31,11 +31,11 @@ public final class DatabaseManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func createContractPDF(_ id: Int16, pdf: Data) {
+    public func createContractPDF(_ id: Int64, pdf: String) {
         guard let contractEntityDecsription = NSEntityDescription.entity(forEntityName: "Contract", in: context) else {return}
         let contract = Contract(entity: contractEntityDecsription, insertInto: context)
         contract.id = id
-        contract.pdf = pdf
+        contract.pdfURL = pdf
         
         appDelegate.saveContext()
     }
@@ -45,11 +45,11 @@ public final class DatabaseManager: NSObject {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contract")
         do {
             return (try? context.fetch(fetchRequest) as? [Contract]) ?? []
-        }
+        } 
     }
     
     //получить info по айди
-    public func fetchContract(with id: Int16) -> Contract? {
+    public func fetchContract(with id: Int64) -> Contract? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contract")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
@@ -58,7 +58,7 @@ public final class DatabaseManager: NSObject {
         }
     }
     
-    public func deleteContract(with id: Int16) {
+    public func deleteContract(with id: Int64) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contract")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {

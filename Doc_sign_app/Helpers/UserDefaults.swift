@@ -69,6 +69,11 @@ class DefaultsHelper {
         defaults.set(integer, forKey: key)
     }
     
+    func setInteger64(integer64: Int64, key: String) {
+        defaults.set(NSNumber(value: integer64), forKey: key)
+    }
+
+    
     /**
      Save value of Boolean type for specified key. _Not very much sense to save_ **false** _since it is default value which you get if you try to retrieve Boolean for non-existent key, instead of nil in case of getting string._
      */
@@ -83,10 +88,12 @@ class DefaultsHelper {
     /**
      Some more universal method to save String/Integer/Boolean type value for specified key. _Caveat - pass only one arg because only first one will be saved._
      */
-    func set(string: String? = nil, integer: Int? = nil, boolean: Bool? = nil, stringArray: [String]? = nil, key: String) { //Attempt to create a universal one
+    func set(string: String? = nil, integer: Int? = nil, integer64: Int64? = nil, boolean: Bool? = nil, stringArray: [String]? = nil, key: String) { //Attempt to create a universal one
         if string != nil {
             defaults.set(string, forKey: key)
         } else if integer != nil {
+            defaults.set(integer, forKey: key)
+        } else if integer64 != nil {
             defaults.set(integer, forKey: key)
         } else if boolean != nil {
             defaults.set(boolean, forKey: key)
@@ -108,6 +115,11 @@ class DefaultsHelper {
     func getInteger(key: String) -> Int? {
         return defaults.integer(forKey: key)
     }
+    
+    func getInteger64(key: String) -> Int64 {
+        return defaults.object(forKey: key) as? Int64 ?? 0
+    }
+
     
     /**
      Retrieve a boolean for specified key. _Will return_ **0** _instead of_ **nil** _if fnothing found for specified key._

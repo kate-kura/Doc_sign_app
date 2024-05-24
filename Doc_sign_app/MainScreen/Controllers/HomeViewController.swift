@@ -22,15 +22,21 @@ class HomeViewController: UIViewController {
     let secondaryLabel = UILabel()
     let tableView = UITableView()
     let addButton = CustomAddButton()
+    
+    var data: [Contract] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DatabaseManager.shared.fetchContracts()
         
         addViews()
         layoutViews()
         configure()
+        
+        data = DatabaseManager.shared.fetchContracts()
+        tableView.reloadData()
+        updateUI()
+        print(data)
+        print(data.isEmpty)
         
         navigationController?.navigationBar.backgroundColor = Resources.Colors.background
         navigationController?.additionalSafeAreaInsets.top = 12
@@ -142,11 +148,13 @@ extension HomeViewController {
         tableView.backgroundColor = Resources.Colors.background
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CustomCell.self, 
+        tableView.register(CustomCell.self,
                            forCellReuseIdentifier: "CustomCellIdentifier")
         tableView.separatorColor = .clear
-
-        if tableView.numberOfRows(inSection: 0) == 0 {
+    }
+    
+    func updateUI() {
+        if data.isEmpty {
             logoImageView.isHidden = false
             secondaryLabel.isHidden = false
             primaryLabel.isHidden = true
@@ -157,7 +165,6 @@ extension HomeViewController {
             primaryLabel.isHidden = false
             tableView.isHidden = false
         }
-        
     }
 
     
@@ -174,21 +181,27 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return data.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier", for: indexPath) as! CustomCell
-        cell.titleLabel.text = "Договор аренды"
-        cell.companyLabel.text = "Пупкин Василий Иванович"
-        cell.actionButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        
+    
+        let item = data[indexPath.row]
+        cell.titleLabel.text = item.title
+        cell.companyLabel.text = item.companyName
+        cell.actionButton.tag = indexPath.row
+        cell.actionButton.addTarget(self, action: #selector(cellButtonTapped(_:)), for: .touchUpInside)
+    
         return cell
     }
-    @objc func buttonTapped(_ sender: UIButton) {
+    @objc func cellButtonTapped(_ sender: UIButton) {
         let vc = BottomMenuViewController()
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        vc.id = data[indexPath.row].id
         if let sheet = vc.sheetPresentationController{
-            sheet.detents = [.medium()]
+            sheet.detents = [.medium(), .large()]
             sheet.preferredCornerRadius = 16
         }
         present(vc, animated: true)

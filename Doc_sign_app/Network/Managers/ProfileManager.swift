@@ -60,7 +60,7 @@ class ProfileManager {
                     }
                 }
             } else {
-                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
+                Logg.err(.error, "Token refresh failed.")
                 let result = false
                 completion(result)
             }
@@ -104,7 +104,7 @@ class ProfileManager {
                     }
                 }
             } else {
-                Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
+                Logg.err(.error, "Token refresh failed.")
                 let result = false
                 completion(result)
             }

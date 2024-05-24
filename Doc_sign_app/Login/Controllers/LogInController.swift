@@ -193,9 +193,16 @@ extension LogInViewController{
                 
                 ProfileManager().getUserProfileDetails(completion: { result in
                     if result {
-                        let vc = ContainerViewController()
-                        vc.modalPresentationStyle = .fullScreen
-                        self.present(vc, animated: true, completion: nil)
+                        ContractsManager().getListOfContracts{ (contracts, error) in
+                            if let error = error {
+                                Logg.err(.error, "")
+                            } else {
+                                Logg.err(.success, "")
+                            }
+                            let vc = ContainerViewController()
+                            vc.modalPresentationStyle = .fullScreen
+                            self.present(vc, animated: true, completion: nil)
+                        }
                     } else {
                         Logg.err(.error, "Something went wrong during getting User Profile Details.")
                     }

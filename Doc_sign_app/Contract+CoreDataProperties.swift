@@ -13,10 +13,10 @@ import CoreData
 public class Contract: NSManagedObject {}
 
 extension Contract {
-    @NSManaged public var id: Int16
+    @NSManaged public var id: Int64
     @NSManaged public var title: String?
     @NSManaged public var companyName: String?
-    @NSManaged public var pdf: Data?
+    @NSManaged public var pdfURL: String?
 
 }
 

@@ -86,9 +86,18 @@ extension DocFromQRcodeIsSignedViewController {
     
     @objc private func didTapNext() {
         
-        let vc = ContainerViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        ContractsManager().getContractContent(completion: { result in
+            if result {
+                let vc = ContainerViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            } else {
+                Logg.err(.error, "Something went wrong during getting Contract Content.")
+            }
+        })
+//        let vc = ContainerViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: false, completion: nil)
 
     }
 }
