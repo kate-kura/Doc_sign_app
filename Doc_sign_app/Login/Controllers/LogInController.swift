@@ -195,9 +195,9 @@ extension LogInViewController{
                     if result {
                         ContractsManager().getListOfContracts{ (contracts, error) in
                             if let error = error {
-                                Logg.err(.error, "")
+                                Logg.err(.error, "error")
                             } else {
-                                Logg.err(.success, "")
+                                Logg.err(.success, "success")
                             }
                             let vc = ContainerViewController()
                             vc.modalPresentationStyle = .fullScreen

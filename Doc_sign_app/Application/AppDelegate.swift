@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error {
                 Logg.err(.error, error.localizedDescription)
             } else {
-                print("DB url - ", description.url?.absoluteString)
+                print("DB url - ", description.url?.absoluteString ?? "")
             }
         }
         return container

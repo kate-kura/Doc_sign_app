@@ -20,7 +20,6 @@ public final class DatabaseManager: NSObject {
         appDelegate.persistentContainer.viewContext
     }
     
-    //из кью ар кода и при авторизации список контрактов
     public func createContract(_ id: Int64, title: String, companyName: String) {
         guard let contractEntityDecsription = NSEntityDescription.entity(forEntityName: "Contract", in: context) else {return}
         let contract = Contract(entity: contractEntityDecsription, insertInto: context)
@@ -40,7 +39,6 @@ public final class DatabaseManager: NSObject {
         appDelegate.saveContext()
     }
     
-    //  получить все контракты чтобы установить количество cell
     public func fetchContracts() -> [Contract] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contract")
         do {
@@ -48,7 +46,6 @@ public final class DatabaseManager: NSObject {
         } 
     }
     
-    //получить info по айди
     public func fetchContract(with id: Int64) -> Contract? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contract")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)

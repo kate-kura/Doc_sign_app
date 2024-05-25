@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
     let addButton = CustomAddButton()
     
     var data: [Contract] = []
+    var filteredData: [Contract] = []
+    var filtered = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class HomeViewController: UIViewController {
         configure()
         
         data = DatabaseManager.shared.fetchContracts()
-        tableView.reloadData()
+//        tableView.reloadData()
         updateUI()
         print(data)
         print(data.isEmpty)
@@ -113,7 +115,10 @@ extension HomeViewController {
         addButton.translatesAutoresizingMaskIntoConstraints = false
 
         searchTextField.placeholder = Resources.Strings.search
+        searchTextField.keyboardType = .default
         searchTextField.textColor = Resources.Colors.secondaryLabelColor
+        searchTextField.delegate = self
+        searchTextField.autocapitalizationType = .sentences
         
         let textFieldContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 312, height: 40))
         textFieldContainerView.addSubview(searchTextField)
@@ -167,7 +172,6 @@ extension HomeViewController {
         }
     }
 
-    
     @objc func didTapMenuButton() {
         delegate?.didTapMenuButton()
     }
@@ -177,21 +181,33 @@ extension HomeViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        if !filteredData.isEmpty {
+            return filteredData.count
+        }
+        return filtered ? 0 : data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier", for: indexPath) as! CustomCell
     
-        let item = data[indexPath.row]
-        cell.titleLabel.text = item.title
-        cell.companyLabel.text = item.companyName
-        cell.actionButton.tag = indexPath.row
-        cell.actionButton.addTarget(self, action: #selector(cellButtonTapped(_:)), for: .touchUpInside)
+        if !filteredData.isEmpty {
+            let item = filteredData[indexPath.row]
+            cell.titleLabel.text = item.title
+            cell.companyLabel.text = item.companyName
+            cell.actionButton.tag = indexPath.row
+            cell.actionButton.addTarget(self, action: #selector(cellButtonTapped(_:)), for: .touchUpInside)
+        } else {
+            let item = data[indexPath.row]
+            cell.titleLabel.text = item.title
+            cell.companyLabel.text = item.companyName
+            cell.actionButton.tag = indexPath.row
+            cell.actionButton.addTarget(self, action: #selector(cellButtonTapped(_:)), for: .touchUpInside)
+        }
     
         return cell
     }
@@ -213,5 +229,33 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 152
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if let text = textField.text {
+            filterText(text+string)
+        }
+        
+        return true
+    }
+    
+    func filterText(_ query: String) {
+        filteredData.removeAll()
+        for string in data {
+            if string.title!.lowercased().starts(with: query.lowercased()) {
+                filteredData.append(string)
+            }
+        }
+        
+        tableView.reloadData()
+        filtered = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
