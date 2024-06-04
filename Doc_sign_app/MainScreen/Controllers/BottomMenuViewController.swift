@@ -73,11 +73,8 @@ extension BottomMenuViewController {
     @objc func didTapWatchPDFBotton() {
         ContractsManager().getPDFContract(id: id!, completion: {result in
             if result {
-                print("!!!!!!!!!!!!!!!!!!!!!!!")
                 if let pdfURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("contract\(String(describing: self.id)).pdf") {
-                    print("-------", pdfURL)
                     if let pdfDocument = PDFDocument(url: pdfURL) {
-                        print("!!!!!!!!!!!", pdfURL)
                         self.pdfView.document = pdfDocument
 
                         self.view.addSubview(self.pdfView)
@@ -86,7 +83,7 @@ extension BottomMenuViewController {
                         self.view.addSubview(self.backPDFButton)
                         self.backPDFButton.translatesAutoresizingMaskIntoConstraints = false
                         NSLayoutConstraint.activate([
-                            self.backPDFButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8),
+                            self.backPDFButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
                             self.backPDFButton.leadingAnchor.constraint(equalToSystemSpacingAfter: self.view.leadingAnchor, multiplier: 2),
                         ])
                     }

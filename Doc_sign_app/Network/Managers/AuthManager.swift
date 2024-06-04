@@ -74,7 +74,6 @@ class AuthManager {
                 let result = true
                 let resultDictionary = JSONResult
                 DefaultsHelper().setString(string: email, key: Resources.Keys.keyCurrentUserEmail)
-                DefaultsHelper().setString(string: password, key: Resources.Keys.keyCurrentUserPassword)
                 DefaultsHelper().setString(string: resultDictionary.token, key: Resources.Keys.keyCurrentUserAuthToken)
                 DefaultsHelper().setString(string: resultDictionary.refresh, key: Resources.Keys.keyCurrentUserRefreshToken)
                 completion(result, statusCode)
@@ -320,7 +319,6 @@ class AuthManager {
                 Logg.err(.success, "Account registration completed.")
                 let result = true
                 let resultDictionary = JSONResult
-                DefaultsHelper().setString(string: password, key: Resources.Keys.keyCurrentUserPassword)
                 DefaultsHelper().setString(string: resultDictionary.refresh, key: Resources.Keys.keyCurrentUserAuthToken)
                 DefaultsHelper().setString(string: resultDictionary.token, key: Resources.Keys.keyCurrentUserRefreshToken)
                 completion(result, statusCode)

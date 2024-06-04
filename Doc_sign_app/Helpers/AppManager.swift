@@ -28,25 +28,6 @@ class AppManager {
         return false
     }
     
-//    static func debugMode() -> DebugMode {
-//        // .none / .terse / .detailed
-//        return .terse
-//    }
-    
-    //MARK: Fun
-//    static func windowManager(action: ActionType) {
-//        switch action {
-//        case .minimize:
-//            print("")
-//        case .close:
-//            print("")
-//        case .die:
-//            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
-//                exit(0)
-//            }
-//        }
-//    }
-    
     static func viewDidLoad(view: String) {
         if AppManager.extendedDebugMode() {
             Logg.err(.info, "\"\(view)\" View did load")
@@ -59,19 +40,3 @@ class AppManager {
         }
     }
 }
-
-//MARK: Usage
-
-/*
- 
- if AppManager.debugMode() {
- Logg.err(.debug, "Message")
- }
- 
- */
-
-/*
- 
- AppManager.windowManager(.close)
- 
- */

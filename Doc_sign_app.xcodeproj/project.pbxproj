@@ -61,8 +61,6 @@
 		C4D5E1B72B4D805A00F9DAA3 /* LoginORregController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B62B4D805A00F9DAA3 /* LoginORregController.swift */; };
 		C4D5E1BA2B4D832300F9DAA3 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1B92B4D832300F9DAA3 /* Resources.swift */; };
 		C4D5E1BE2B4D83C700F9DAA3 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1BD2B4D83C700F9DAA3 /* UIColors.swift */; };
-		C4D5E1CA2B544E3400F9DAA3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5E1C92B544E3400F9DAA3 /* UIView.swift */; };
-		C4DB2B502BC955570064375B /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B4F2BC955570064375B /* AuthModels.swift */; };
 		C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB2B592BCE7D420064375B /* Debugger.swift */; };
 		C4DD67F82BFB592000B64E18 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD67F72BFB592000B64E18 /* CustomCell.swift */; };
 		C4DD67FA2BFC819700B64E18 /* CustomCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD67F92BFC819700B64E18 /* CustomCellButton.swift */; };
@@ -145,8 +143,6 @@
 		C4D5E1B62B4D805A00F9DAA3 /* LoginORregController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginORregController.swift; sourceTree = "<group>"; };
 		C4D5E1B92B4D832300F9DAA3 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		C4D5E1BD2B4D83C700F9DAA3 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
-		C4D5E1C92B544E3400F9DAA3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		C4DB2B4F2BC955570064375B /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
 		C4DB2B592BCE7D420064375B /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
 		C4DD67F72BFB592000B64E18 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		C4DD67F92BFC819700B64E18 /* CustomCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellButton.swift; sourceTree = "<group>"; };
@@ -282,7 +278,7 @@
 		C485862C2BBC862D00E2E60C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4DB2B4F2BC955570064375B /* AuthModels.swift */,
+				C4A6906C2BF357EB00FC0C12 /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,7 +337,6 @@
 				C4425E892BC8195B00038D74 /* AlertManager.swift */,
 				C4D5E1B92B4D832300F9DAA3 /* Resources.swift */,
 				C4D5E1BD2B4D83C700F9DAA3 /* UIColors.swift */,
-				C4D5E1C92B544E3400F9DAA3 /* UIView.swift */,
 				C4425E832BC7E80400038D74 /* Logger.swift */,
 				C4E9BB182BC9099E001A758F /* UserDefaults.swift */,
 				C4E9BB1A2BC90E58001A758F /* AppManager.swift */,
@@ -405,7 +400,6 @@
 				C4A690662BEA39F400FC0C12 /* ProfileManager.swift */,
 				C4A690682BF338B800FC0C12 /* ContractsManager.swift */,
 				C4A6906A2BF3575900FC0C12 /* DatabaseManager.swift */,
-				C4A6906C2BF357EB00FC0C12 /* Models.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -547,7 +541,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C486748C2BA881D400CA47D6 /* HomeViewController.swift in Sources */,
-				C4D5E1CA2B544E3400F9DAA3 /* UIView.swift in Sources */,
 				C46BCE222B67D6E300D05DEF /* RegisterController3.swift in Sources */,
 				C4786EAE2BDA83FE00182397 /* CustomBackButton.swift in Sources */,
 				C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */,
@@ -585,7 +578,6 @@
 				C4425E712BC3E75D00038D74 /* QRcodeViewController.swift in Sources */,
 				C4DD67F82BFB592000B64E18 /* CustomCell.swift in Sources */,
 				C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */,
-				C4DB2B502BC955570064375B /* AuthModels.swift in Sources */,
 				C4786EAA2BDA83FE00182397 /* CustomArchiveButton.swift in Sources */,
 				C48674892BA8815C00CA47D6 /* MenuViewController.swift in Sources */,
 				C4425E792BC40E2F00038D74 /* ProfileViewController2.swift in Sources */,

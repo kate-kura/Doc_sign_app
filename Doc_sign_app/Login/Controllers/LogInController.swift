@@ -194,7 +194,7 @@ extension LogInViewController{
                 ProfileManager().getUserProfileDetails(completion: { result in
                     if result {
                         ContractsManager().getListOfContracts{ (contracts, error) in
-                            if let error = error {
+                            if error != nil {
                                 Logg.err(.error, "error")
                             } else {
                                 Logg.err(.success, "success")

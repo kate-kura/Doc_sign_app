@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
         configure()
         
         data = DatabaseManager.shared.fetchContracts()
-//        tableView.reloadData()
+        tableView.reloadData()
         updateUI()
         print(data)
         print(data.isEmpty)
@@ -215,7 +215,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = BottomMenuViewController()
         
         let indexPath = IndexPath(row: sender.tag, section: 0)
-        vc.id = data[indexPath.row].id
+ 
+        if !filteredData.isEmpty {
+            vc.id = filteredData[indexPath.row].id
+        } else {
+            vc.id = data[indexPath.row].id
+        }
+        
         if let sheet = vc.sheetPresentationController{
             sheet.detents = [.medium(), .large()]
             sheet.preferredCornerRadius = 16

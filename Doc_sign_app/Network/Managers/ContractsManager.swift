@@ -106,6 +106,7 @@ class ContractsManager {
                         Logg.err(.success, "List of Contracts successfully got.")
                         let resultDictionary = JSONResult.contracts_info
                         var contracts = [ContractModel]()
+                        DatabaseManager.shared.deleteAllContracts()
                         for item in resultDictionary {
                             let contract = ContractModel(date: item.date, companyName: item.companyName, id: item.id, title: item.title)
                             DatabaseManager.shared.createContract(item.id, title: item.title, companyName: item.companyName)

@@ -35,6 +35,7 @@ enum Resources {
         static var secondaryText2 = "На вашу электронную почту отправлено письмо с кодом"
         static var secondaryText3 = "Пароль должен быть не менее 8 символов и содержать заглавные буквы и цифры"
         static var secondaryText4 = "Здесь будут подписанные вами договоры"
+        static var secondaryText5 = "Здесь будут подписанные вами договоры более трёх месяцев назад"
         
         static var email = "E-mail"
         static var password = "Пароль"
@@ -147,7 +148,6 @@ enum Resources {
         static let keyCheckFirstLaunch = "appWasLaunchedBefore"
         static let keyCheckIfSignedIn = "userIsSignedIn"
         static let keyCurrentUserEmail = "currentUserEmail"
-        static let keyCurrentUserPassword = "currentUserPassword"
         static let keyCurrentUserAuthToken = "currentUserAuthToken"
         static let keyCurrentUserRefreshToken = "currentUserRefreshToken"
         static let keyTemporaryUserAuthToken = "temporaryUserAuthToken"
