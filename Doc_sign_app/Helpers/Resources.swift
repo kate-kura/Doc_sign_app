@@ -137,7 +137,7 @@ enum Resources {
         static let getContractContentURL = baseURL + "/contracts/get_contract_content/"
         
         static let getFormContentURL = baseURL + "/forms/get_form_content/"
-        static let getPDFFormURL = baseURL + "/forms/get_form_pdf/"
+        static let getPDFFormURL = baseURL + "/forms/get_form_pdf_v2/"
         static let getFormFieldsURL = baseURL + "/forms/get_form_fields/"
         static let fillFormFieldsURL = baseURL + "/forms/fill_form_fields"
         
