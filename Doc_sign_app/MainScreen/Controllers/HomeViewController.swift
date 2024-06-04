@@ -85,6 +85,7 @@ extension HomeViewController {
             secondaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             secondaryLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 16),
             secondaryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            secondaryLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
 
             primaryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             primaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -218,8 +219,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
  
         if !filteredData.isEmpty {
             vc.id = filteredData[indexPath.row].id
+            vc.contractTitle = filteredData[indexPath.row].title
         } else {
             vc.id = data[indexPath.row].id
+            vc.contractTitle = data[indexPath.row].title
         }
         
         if let sheet = vc.sheetPresentationController{

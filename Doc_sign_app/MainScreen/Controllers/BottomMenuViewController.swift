@@ -11,6 +11,9 @@ import PDFKit
 class BottomMenuViewController: UIViewController {
     
     var id: Int64?
+    var contractTitle: String?
+    
+    let primaryLabel = UILabel()
     let stackView = UIStackView()
     let watchPDFBotton = CustomBottonMenuButtons()
     let exportPDFBotton = CustomBottonMenuButtons()
@@ -33,6 +36,7 @@ class BottomMenuViewController: UIViewController {
 
 extension BottomMenuViewController {
     func addViews() {
+        view.addSubview(primaryLabel)
         view.addSubview(stackView)
         stackView.addArrangedSubview(watchPDFBotton)
         stackView.addArrangedSubview(exportPDFBotton)
@@ -40,7 +44,12 @@ extension BottomMenuViewController {
     
     func layoutViews() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            primaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            primaryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            primaryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            primaryLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
+            stackView.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 32),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             watchPDFBotton.widthAnchor.constraint(equalToConstant: 120),
@@ -54,9 +63,17 @@ extension BottomMenuViewController {
     func configure() {
         view.backgroundColor = Resources.Colors.white
         
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         watchPDFBotton.translatesAutoresizingMaskIntoConstraints =  false
         exportPDFBotton.translatesAutoresizingMaskIntoConstraints = false
+        
+        primaryLabel.textColor = Resources.Colors.primaryLabelColor
+        primaryLabel.text = contractTitle
+        primaryLabel.textAlignment = .center
+        primaryLabel.font = Resources.Fonts.helveticaRegular(with: 20)
+        primaryLabel.numberOfLines = 1
+        primaryLabel.sizeToFit()
         
         stackView.contentMode = .center
         stackView.axis = .horizontal

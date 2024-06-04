@@ -42,6 +42,7 @@ extension ArchiveViewController {
             secondaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             secondaryLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 16),
             secondaryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            secondaryLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
         ])
 
     }

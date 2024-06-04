@@ -95,9 +95,5 @@ extension DocFromQRcodeIsSignedViewController {
                 Logg.err(.error, "Something went wrong during getting Contract Content.")
             }
         })
-//        let vc = ContainerViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: false, completion: nil)
-
     }
 }
