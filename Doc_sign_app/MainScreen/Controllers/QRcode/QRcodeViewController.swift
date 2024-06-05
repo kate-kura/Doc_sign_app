@@ -192,12 +192,12 @@ extension QRcodeViewController {
                         self.present(vc, animated: false, completion: nil)
                     } else {
                         Logg.err(.error, "Something went wrong during getting PDF Form.")
-                        AlertManager.showFetchingBackendError(on: self)
+                        AlertManager.showFetchingQRcodeError(on: self)
                     }
                 })
             } else {
                 Logg.err(.error, "Something went wrong during getting Form Content.")
-                AlertManager.showFetchingBackendError(on: self)
+                AlertManager.showFetchingQRcodeError(on: self)
             }
         })
         
@@ -205,7 +205,7 @@ extension QRcodeViewController {
         ContractsManager().getFormFields(completion: { result in
             if result {} else {
                 Logg.err(.error, "Something went wrong during getting Form Fields.")
-                AlertManager.showFetchingBackendError(on: self)
+                AlertManager.showFetchingQRcodeError(on: self)
             }
         })
     }

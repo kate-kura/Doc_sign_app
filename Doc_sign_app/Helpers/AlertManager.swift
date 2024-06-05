@@ -99,6 +99,10 @@ extension AlertManager {
     public static func showFetchingBackendError(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Application Error", message: "Please, reenter the app.")
     }
+    
+    public static func showFetchingQRcodeError(on vc: UIViewController) {
+        self.showBasicAlert(on: vc, title: "Scanning Error", message: "Please, scan another QR code.")
+    }
 }
 
 
