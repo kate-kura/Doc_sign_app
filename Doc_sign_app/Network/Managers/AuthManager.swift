@@ -40,7 +40,7 @@ class AuthManager {
     
     typealias StatusCompletion = (Bool, Int) -> Void
     
-    
+    // MARK: - Signing In
     func signIn(email: String, password: String, completion: @escaping StatusCompletion) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
@@ -85,6 +85,7 @@ class AuthManager {
         }
     }
     
+    // MARK: - Signing Up
     func signUp(email: String, password: String, completion: @escaping BooleanCompletion) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
@@ -192,6 +193,7 @@ class AuthManager {
         }
     }
     
+    // MARK: - Refresh Token
     func refreshTokens(completion: @escaping BooleanCompletion) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
@@ -225,6 +227,7 @@ class AuthManager {
         }
     }
     
+    // MARK: - Change Password
     func changePassword(email: String, completion: @escaping BooleanCompletion) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
@@ -333,6 +336,7 @@ class AuthManager {
 
 extension AuthManager {
     
+    // MARK: - Checks if auth token is still valid and refreshes if needed
     func checkAuth(completion: @escaping BooleanCompletion) {
         
         let headers: HTTPHeaders = [
@@ -348,7 +352,7 @@ extension AuthManager {
         .validate(statusCode: 200..<300)
         .response { response in
             
-//            Logg.err(.AFdebug, response.debugDescription as String)
+
             switch response.result {
             case .success(_):
                 Logg.err(.success, "Auth token is still valid.")
@@ -362,9 +366,8 @@ extension AuthManager {
                         self.refreshTokens { success in
                             if !success {
                                 DefaultsHelper().setBoolean(boolean: false, key: Resources.Keys.keyCheckIfSignedIn)
-                                UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
-                                UserDefaults.standard.synchronize()
-                            } //MARK: Return to Sign In if refresh token is dead
+                                DefaultsHelper().removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
+                            }
                             completion(success)
                         }
                     case 500:

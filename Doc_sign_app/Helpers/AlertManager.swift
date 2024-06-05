@@ -56,16 +56,8 @@ extension AlertManager {
         self.showBasicAlert(on: vc, title: "Registration Error", message: "User with provided email already exists")
     }
     
-//    public static func showRegistrationErrorAlert(on vc: UIViewController, with error: Error) {
-//        self.showBasicAlert(on: vc, title: "Unknown Registration Error", message: "\(error.localizedDescription)")
-//    }
-    
     public static func showVerifyCodeErrorAlert400(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Invalid Verification Code", message: "Please, enter a valid code.")
-    }
-    
-    public static func showCompleteRegistrationErrorAlert401(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Registration Error", message: "Please, try registration again.")
     }
 }
 
@@ -94,33 +86,26 @@ extension AlertManager {
 
 // MARK: - Forgot Password
 extension AlertManager {
-
-//    public static func showPasswordResetSent(on vc: UIViewController) {
-//        self.showBasicAlert(on: vc, title: "Password Reset Sent", message: nil)
-//    }
-    
-//    public static func showErrorSendingPasswordReset(on vc: UIViewController, with error: Error) {
-//        self.showBasicAlert(on: vc, title: "Error Sending Password Reset", message: "\(error.localizedDescription)")
-//    }
     
     public static func showInvalidEmailFORPasswordReset403(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Password Reset Error", message: "There is no user with such an email address.")
     }
+}
+
+
+// MARK: - Fetching Backend Errors
+extension AlertManager {
     
-    public static func showCompletePasswordResetErrorAlert401(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Password Reset Error", message: "Please, try reset password again.")
+    public static func showFetchingBackendError(on vc: UIViewController) {
+        self.showBasicAlert(on: vc, title: "Application Error", message: "Please, reenter the app.")
     }
 }
 
 
-// MARK: - Fetching User Errors
+// MARK: - Fetching Backend Errors
 extension AlertManager {
     
-    public static func showFetchingUserError(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: "Error Fetching User", message: "\(error.localizedDescription)")
-    }
-    
-    public static func showUnknownFetchingUserError(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Unknown Error Fetching User", message: nil)
+    public static func showCameraError(on vc: UIViewController) {
+        self.showBasicAlert(on: vc, title: "Camera Error", message: "Please, allow camera access.")
     }
 }

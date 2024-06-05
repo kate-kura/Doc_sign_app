@@ -16,13 +16,14 @@ final class RegisterViewController: UIViewController {
     private let secondaryLabel = UILabel()
     private let emailTextField = CustomTextField()
     private let passwordTextField = CustomPasswordTextField()
-    let showPasswordButton = UIButton(type: .custom)
+    private let showPasswordButton = UIButton(type: .custom)
     private let againPasswordTextField = CustomPasswordTextField()
-    let againShowPasswordButton = UIButton(type: .custom)
+    private let againShowPasswordButton = UIButton(type: .custom)
     private let secondaryLabelPassword = UILabel()
     private let nextButton = CustomButton()
     private let stackView = UIStackView()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +46,7 @@ final class RegisterViewController: UIViewController {
 
 extension RegisterViewController{
     
+    // MARK: - UI Setup
     private func addViews() {
         
         view.addSubview(backButton)
@@ -183,6 +185,8 @@ extension RegisterViewController{
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -211,6 +215,7 @@ extension RegisterViewController{
             return
         }
         
+        // Backend communication
         AuthManager().signUp(email: email, password: password, completion: { result in
             if result {
                 let vc = RegisterViewController2()
@@ -222,17 +227,18 @@ extension RegisterViewController{
         })
     }
     
-    @objc func showPasswordButtonTapped() {
+    @objc private func showPasswordButtonTapped() {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         showPasswordButton.isSelected = !showPasswordButton.isSelected
     }
     
-    @objc func againShowPasswordButtonTapped() {
+    @objc private func againShowPasswordButtonTapped() {
         againPasswordTextField.isSecureTextEntry = !againPasswordTextField.isSecureTextEntry
         againShowPasswordButton.isSelected = !againShowPasswordButton.isSelected
     }
 }
         
+// MARK: - UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -242,6 +248,7 @@ extension RegisterViewController: UITextFieldDelegate {
         return true
     }
     
+    // check if emailTextField, passwordTextField and againPasswordTextField are filled
     func checkTextFields() {
         guard let mail = emailTextField.text, let password = passwordTextField.text, let againPassword = againPasswordTextField.text else { return }
 
@@ -252,6 +259,7 @@ extension RegisterViewController: UITextFieldDelegate {
         }
     }
     
+    // check if passwordTextField and againPasswordTextField match
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard let password = passwordTextField.text, let againPassword = againPasswordTextField.text else {
@@ -272,6 +280,7 @@ extension RegisterViewController: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

@@ -14,12 +14,13 @@ class LoginORRegisrationViewController: UIViewController {
     private let loginButton = CustomButton()
     private let registrationButton = CustomButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addViews()
-        layoutViews()
-        configure()
+        self.addViews()
+        self.layoutViews()
+        self.configure()
      
         loginButton.addTarget(self, action: #selector(didTapLogIn), for: .touchUpInside)
         registrationButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
@@ -29,6 +30,7 @@ class LoginORRegisrationViewController: UIViewController {
 
 extension LoginORRegisrationViewController {
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(logoImageView)
         stackView.addArrangedSubview(loginButton)
@@ -85,7 +87,6 @@ extension LoginORRegisrationViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    // MARK: - Selectors
     @objc private func didTapRegister() {
         let vc = RegisterViewController()
         vc.modalPresentationStyle = .fullScreen

@@ -25,12 +25,14 @@ class DocFromQRcodeViewController: UIViewController {
     var textFields: [UITextField] = []
     var textFieldsKeysValues: [String: String] = [:]
     
+    // Get data from user defaults
     let QRcodeID: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)
     let companyText: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRdocCompany)
     let titleText: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRdocTitle)
     let formFields = DefaultsHelper().getStringArray(key: Resources.Keys.keyCurrentFormFields) ?? []
     let backFormFields = DefaultsHelper().getStringArray(key: Resources.Keys.keyCurrentBackendFormFields) ?? []
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +49,7 @@ class DocFromQRcodeViewController: UIViewController {
 
 extension DocFromQRcodeViewController {
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -160,6 +163,7 @@ extension DocFromQRcodeViewController {
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
     @objc private func didTapBack() {
         let vc = QRcodeViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -168,13 +172,14 @@ extension DocFromQRcodeViewController {
     
     @objc private func didTapNext() {
         
+        // Backend communication
         ContractsManager().fillFormFields(respondingPartyKeys: textFieldsKeysValues, completion: { result in
             if result {
                 let vc = DocFromQRcodeIsSignedViewController()
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: false, completion: nil)
             } else {
-                AlertManager.showRegistrationErrorAlert403(on: self)
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
     }
@@ -182,10 +187,13 @@ extension DocFromQRcodeViewController {
     @objc func openPDFButtonTapped() {
         if let pdfURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("contract\(DefaultsHelper().getString(key: Resources.Keys.keyCurrentQRcodeID)!).pdf") {
             if let pdfDocument = PDFDocument(url: pdfURL) {
+                
+                // UI setup
+                pdfView.autoScales = true
+                pdfView.displayDirection = .vertical
                 pdfView.document = pdfDocument
 
                 view.addSubview(pdfView)
-
                 backPDFButton.addTarget(self, action: #selector(closePDFView), for: .touchUpInside)
                 view.addSubview(backPDFButton)
                 backPDFButton.translatesAutoresizingMaskIntoConstraints = false
@@ -202,8 +210,10 @@ extension DocFromQRcodeViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension DocFromQRcodeViewController: UITextFieldDelegate {
     
+    // save entered text to textFieldsKeysValues array with backFormFields keys
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let index = textFields.firstIndex(of: textField), let text = textField.text else {return}
         textFieldsKeysValues[backFormFields[index]] = text
@@ -216,6 +226,7 @@ extension DocFromQRcodeViewController: UITextFieldDelegate {
         return true
     }
     
+    // check if all textFields are filled
     func checkTextFields() {
         let isAnyTextFieldEmpty = textFields.contains { textField in
             return textField.text?.isEmpty ?? true
@@ -223,6 +234,7 @@ extension DocFromQRcodeViewController: UITextFieldDelegate {
         nextButton.isEnabled = !isAnyTextFieldEmpty
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

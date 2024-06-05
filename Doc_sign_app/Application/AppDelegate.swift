@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    //create container to load data
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreData")
         container.loadPersistentStores { description, error in
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    //save changes in Core Data context
     func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {

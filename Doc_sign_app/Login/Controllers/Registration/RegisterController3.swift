@@ -18,6 +18,7 @@ final class RegisterViewController3: UIViewController {
     private let stackView = UIStackView()
     private let nextButton = CustomButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +37,7 @@ final class RegisterViewController3: UIViewController {
 
 extension RegisterViewController3 {
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -122,6 +124,8 @@ extension RegisterViewController3 {
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         let vc = RegisterViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -145,6 +149,7 @@ extension RegisterViewController3 {
             return
         }
         
+        // Backend communication
         AuthManager().completeSignUp(firstName: firstName, lastName: lastName, completion: { result, statusCode in
             if result {
                 DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckIfSignedIn)
@@ -168,6 +173,7 @@ extension RegisterViewController3 {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension RegisterViewController3: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -177,6 +183,7 @@ extension RegisterViewController3: UITextFieldDelegate {
         return true
     }
     
+    // check if nameTextField and surnameTextField are filled
     func checkTextFields() {
         guard let name = nameTextField.text, let surname = surnameTextField.text else { return }
 
@@ -190,6 +197,7 @@ extension RegisterViewController3: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

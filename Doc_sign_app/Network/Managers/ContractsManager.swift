@@ -61,7 +61,7 @@ class ContractsManager {
             case title = "form_title"
         }
     }
-    //!!!!!!!!!!!!!!!!!!!!!
+
     struct FormFieldsDecodable: Decodable {
         let formID: Int
         let formFields: [String]
@@ -76,16 +76,7 @@ class ContractsManager {
 
     typealias ContractsCompletion = ([ContractModel]?, Error?) -> Void
     
-//    AuthManager().checkAuth{ success in
-//        if success {
-//            
-//        } else {
-//            Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
-//            let result = false
-//            completion(result)
-//        }
-//    }
-    
+    // MARK: - Contracts
     func getListOfContracts(completion: @escaping ContractsCompletion) {
         
         AuthManager().checkAuth{ success in
@@ -203,25 +194,7 @@ class ContractsManager {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // MARK: - Froms
     func getFormContentFromQR(completion: @escaping BooleanCompletion) {
         
         AuthManager().checkAuth{ success in
@@ -382,3 +355,12 @@ class ContractsManager {
     }
 }
 
+//    AuthManager().checkAuth{ success in
+//        if success {
+//
+//        } else {
+//            Logg.err(.error, "Token refresh failed. Cannot update user profile details.")
+//            let result = false
+//            completion(result)
+//        }
+//    }

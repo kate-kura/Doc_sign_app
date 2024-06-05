@@ -13,6 +13,7 @@ class ArchiveViewController: UIViewController {
     let secondaryLabel = UILabel()
     let logoImageView = UIImageView()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +24,8 @@ class ArchiveViewController: UIViewController {
 }
 
 extension ArchiveViewController {
+    
+    // MARK: - UI Setup
     func addViews() {
         view.addSubview(primaryLabel)
         view.addSubview(logoImageView)

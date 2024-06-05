@@ -14,6 +14,7 @@ class ContainerViewController: UIViewController {
         case closed
     }
     
+    // Default menu State
     private var menuState: MenuState = .closed
     
     let menuVC = MenuViewController()
@@ -23,7 +24,7 @@ class ContainerViewController: UIViewController {
     lazy var qrCodeVC = QRcodeViewController()
     lazy var archiveVC = ArchiveViewController()
     
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +36,7 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController {
     
+    // Adds child VCs to the container
     func addChildVCs() {
         menuVC.delegate = self
         addChild(menuVC)
@@ -47,21 +49,22 @@ extension ContainerViewController {
         view.addSubview(navVC.view)
         navVC.didMove(toParent: self)
         self.navVC = navVC
-        
     }
     
 }
 
+// MARK: - HomeViewControllerDelegate
 extension ContainerViewController: HomeViewControllerDelegate {
     
     func didTapMenuButton() {
         toggleMenu(completion: nil)
     }
     
+    // Switch menu State
     func toggleMenu(completion: (() -> Void)?) {
         switch menuState {
         case .closed:
-
+            // Open menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
                 
                 self.navVC?.view.frame.origin.x = self.homeVC.view.frame.size.width - 100
@@ -73,6 +76,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
             }
 
         case .opened:
+            // Close menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
                 
                 self.navVC?.view.frame.origin.x = 0
@@ -90,8 +94,10 @@ extension ContainerViewController: HomeViewControllerDelegate {
     }
 }
 
+// MARK: - MenuViewControllerDelegate
 extension ContainerViewController: MenuViewControllerDelegate {
     
+    // Select menu item
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         toggleMenu(completion: nil)
         switch menuItem {
@@ -104,6 +110,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
         }
 
     }
+    // Show ProfileViewController1
     func addProfile() {
         removeChildVCs()
         
@@ -113,6 +120,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
         vc.view.frame = view.frame
         vc.didMove(toParent: self)
     }
+    // Show QRcodeViewController
     func addQRcode() {
         removeChildVCs()
         
@@ -122,6 +130,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
         vc.view.frame = view.frame
         vc.didMove(toParent: self)
     }
+    // Show ArchiveViewController
     func addArchive() {
         removeChildVCs()
         

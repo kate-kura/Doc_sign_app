@@ -9,8 +9,8 @@ import UIKit
 
 class ProfileViewController2: UIViewController {
     
-    private let navBarLabel = UILabel()
-    private let backButton = CustomBackButton()
+    let navBarLabel = UILabel()
+    let backButton = CustomBackButton()
     
     let editDataButton = CustomEditDataButton()
     let basicLabel = UILabel()
@@ -21,13 +21,14 @@ class ProfileViewController2: UIViewController {
     let contactsLabel = UILabel()
     let mailHeader = UILabel()
     let mail = UILabel()
-    
     let exitButton = UIButton()
     
+    // Get data from user defaults
     let firstName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserFirstName)
     let lastName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserLastName)
     let email: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserEmail)
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +45,7 @@ class ProfileViewController2: UIViewController {
 
 extension ProfileViewController2{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -179,6 +181,7 @@ extension ProfileViewController2{
     
     }
     
+    // MARK: - Selectors
     @objc private func didTapBack() {
         self.dismiss(animated: false, completion: nil)
     }
@@ -191,9 +194,8 @@ extension ProfileViewController2{
     }
     
     @objc private func didTapLogOut() {
-        
         DefaultsHelper().removePersistentDomain()
-        DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckFirstLaunch)
+        DefaultsHelper().setBoolean(boolean: false, key: Resources.Keys.keyCheckIfSignedIn)
         DatabaseManager.shared.deleteAllContracts()
         
         let vc = LoginORRegisrationViewController()

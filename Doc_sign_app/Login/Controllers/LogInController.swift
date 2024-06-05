@@ -16,13 +16,14 @@ final class LogInViewController: UIViewController {
     private let label = UILabel()
     private let emailTextField = CustomTextField()
     private let passwordTextField = CustomPasswordTextField()
-    let showPasswordButton = UIButton(type: .custom)
+    private let showPasswordButton = UIButton(type: .custom)
     private let nextButton = CustomButton()
     private let forgotPasswordButtton = CustomTextButton()
     
     private let stackView = UIStackView()
     private let textStackView = UIStackView()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +46,7 @@ final class LogInViewController: UIViewController {
 
 extension LogInViewController{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(primaryLabel)
@@ -160,6 +162,8 @@ extension LogInViewController{
         forgotPasswordButtton.setTitle(Resources.Strings.forgotPassword)
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -187,6 +191,7 @@ extension LogInViewController{
             return
         }
         
+        // Backend communication
         AuthManager().signIn(email: email, password: password, completion: { result, statusCode in
             if result {
                 DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckIfSignedIn)
@@ -196,15 +201,16 @@ extension LogInViewController{
                         ContractsManager().getListOfContracts{ (contracts, error) in
                             if error != nil {
                                 Logg.err(.error, "error")
+                                AlertManager.showFetchingBackendError(on: self)
                             } else {
-                                Logg.err(.success, "success")
+                                let vc = ContainerViewController()
+                                vc.modalPresentationStyle = .fullScreen
+                                self.present(vc, animated: true, completion: nil)
                             }
-                            let vc = ContainerViewController()
-                            vc.modalPresentationStyle = .fullScreen
-                            self.present(vc, animated: true, completion: nil)
                         }
                     } else {
                         Logg.err(.error, "Something went wrong during getting User Profile Details.")
+                        AlertManager.showFetchingBackendError(on: self)
                     }
                 })
             } else {
@@ -223,12 +229,13 @@ extension LogInViewController{
         self.present(vc, animated: true, completion: nil)
     }
     
-    @objc func showPasswordButtonTapped() {
+    @objc private func showPasswordButtonTapped() {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         showPasswordButton.isSelected = !showPasswordButton.isSelected
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension LogInViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -238,6 +245,7 @@ extension LogInViewController: UITextFieldDelegate {
         return true
     }
     
+    // check if emailTextField and passwordTextField are filled
     func checkTextFields() {
         guard let mail = emailTextField.text, let password = passwordTextField.text else { return }
 
@@ -248,6 +256,7 @@ extension LogInViewController: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

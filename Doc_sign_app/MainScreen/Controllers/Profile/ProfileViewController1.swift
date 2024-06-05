@@ -10,17 +10,18 @@ import UIKit
 class ProfileViewController1: UIViewController {
     
     let imagePickerController = UIImagePickerController()
-    
-    private let navBarLabel = UILabel()
-    private let backButton = CustomBackButton()
+    let navBarLabel = UILabel()
+    let backButton = CustomBackButton()
     let avatarImageView = UIImageView()
     let photoButton = CustomPhotoButton()
     let profileLabel = UILabel()
     let myDataButton = CustomMyDataButton()
     
+    // Get data from user defaults
     let firstName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserFirstName)
     let lastName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserLastName)
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,12 +33,12 @@ class ProfileViewController1: UIViewController {
         myDataButton.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
         photoButton.addTarget(self, action: #selector(didTapPhotoButton), for: .touchUpInside)
 
+        // check is App was Launched Before and User is Logged In -> load avatar image
         let (wasLaunchedBefore, isLoggedIn) = Debugger().checkOnLaunch()
         if (isLoggedIn && wasLaunchedBefore) {
             loadImageFromLocal()
         } else {
-            UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
-            UserDefaults.standard.synchronize()
+            DefaultsHelper().removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
         }
     }
     
@@ -45,6 +46,7 @@ class ProfileViewController1: UIViewController {
 
 extension ProfileViewController1{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -115,6 +117,7 @@ extension ProfileViewController1{
 
     }
 
+    // Save chosen image locally
     func saveImageLocally(image: UIImage) {
         autoreleasepool {
             if let imageData = image.jpegData(compressionQuality: 1.0) {
@@ -131,6 +134,7 @@ extension ProfileViewController1{
         }
     }
 
+    // Load image from local storage
     func loadImageFromLocal() {
         if let filename = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserProfileImage) {
             let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
@@ -145,6 +149,7 @@ extension ProfileViewController1{
         }
     }
     
+    // MARK: - Selectors
     @objc private func didTapBack() {
         let vc = ContainerViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -172,6 +177,7 @@ extension ProfileViewController1{
         self.present(ac, animated: true, completion: nil)
     }
     
+    // show Image Picker Controller
     func showImagePicker(selectedSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(selectedSource) else {
             print("Selected source is not available")
@@ -185,8 +191,10 @@ extension ProfileViewController1{
     
 }
 
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ProfileViewController1: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // finish image selection
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[.originalImage] as? UIImage {
@@ -196,9 +204,9 @@ extension ProfileViewController1: UIImagePickerControllerDelegate, UINavigationC
             print("Image is not found")
         }
         picker.dismiss(animated: true,completion: nil)
-        
     }
     
+    // cancel image selection
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

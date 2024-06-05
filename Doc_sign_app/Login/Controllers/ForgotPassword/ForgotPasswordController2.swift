@@ -16,6 +16,7 @@ final class ForgotPasswordViewController2: UIViewController {
     private let codeTextField = CustomTextField()
     private let nextButton = CustomButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,7 @@ final class ForgotPasswordViewController2: UIViewController {
 
 extension ForgotPasswordViewController2{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(primaryLabel)
@@ -97,6 +99,8 @@ extension ForgotPasswordViewController2{
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         self.dismiss(animated: false, completion: nil)
     }
@@ -105,6 +109,7 @@ extension ForgotPasswordViewController2{
         
         guard let code = self.codeTextField.text else {return}
         
+        // Backend communication
         AuthManager().confirmChangePassword(code: code, completion: { result in
             if result {
                 let vc = ForgotPasswordViewController3()
@@ -118,6 +123,7 @@ extension ForgotPasswordViewController2{
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension ForgotPasswordViewController2: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         DispatchQueue.main.async {
@@ -126,6 +132,7 @@ extension ForgotPasswordViewController2: UITextFieldDelegate {
         return true
     }
     
+    // check if codeTextField is filled
     func checkTextFields() {
         guard let code = codeTextField.text else { return }
 
@@ -136,6 +143,7 @@ extension ForgotPasswordViewController2: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

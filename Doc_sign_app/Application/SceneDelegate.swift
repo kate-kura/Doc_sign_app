@@ -19,14 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         DefaultsHelper().setBoolean(boolean: true, key: Resources.Keys.keyCheckFirstLaunch)
         
-//        AuthManager().checkAuth()
-        
         let (wasLaunchedBefore, isLoggedIn) = Debugger().checkOnLaunch()
         
-//        Logg.err(.debug, "Proceeding to \"Home\" View...")
-//        window?.rootViewController = ContainerViewController()
-//        window?.makeKeyAndVisible()
-        
+        // check app launch and user authorization
         if (!wasLaunchedBefore || !isLoggedIn) {
             Logg.err(.debug, "Proceeding to \"Sign In\" View...")
             window?.rootViewController = LoginORRegisrationViewController()

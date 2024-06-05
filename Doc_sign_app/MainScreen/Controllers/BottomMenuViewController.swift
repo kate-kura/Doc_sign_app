@@ -21,6 +21,7 @@ class BottomMenuViewController: UIViewController {
     var pdfView: PDFView!
     let backPDFButton = CustomBackButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +36,8 @@ class BottomMenuViewController: UIViewController {
 }
 
 extension BottomMenuViewController {
+    
+    // MARK: - UI Setup
     func addViews() {
         view.addSubview(primaryLabel)
         view.addSubview(stackView)
@@ -87,15 +90,20 @@ extension BottomMenuViewController {
         pdfView = PDFView(frame: view.bounds)
     }
     
+    // MARK: - Selectors
     @objc func didTapWatchPDFBotton() {
+        // Backend communication
         ContractsManager().getPDFContract(id: id!, completion: {result in
             if result {
                 if let pdfURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("contract\(String(describing: self.id)).pdf") {
                     if let pdfDocument = PDFDocument(url: pdfURL) {
+                        
+                        // UI setup
+                        self.pdfView.autoScales = true
+                        self.pdfView.displayDirection = .vertical
                         self.pdfView.document = pdfDocument
 
                         self.view.addSubview(self.pdfView)
-
                         self.backPDFButton.addTarget(self, action: #selector(self.closePDFView), for: .touchUpInside)
                         self.view.addSubview(self.backPDFButton)
                         self.backPDFButton.translatesAutoresizingMaskIntoConstraints = false
@@ -107,9 +115,11 @@ extension BottomMenuViewController {
                 }
             } else {
                 Logg.err(.error, "Something went wrong during getting PDF Contract.")
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
     }
+    
     @objc func closePDFView() {
         pdfView.removeFromSuperview()
         backPDFButton.removeFromSuperview()
@@ -120,6 +130,7 @@ extension BottomMenuViewController {
 
             if let url = pdfURL {
                 do {
+                    // Show Activity View Controller and export PDF
                     let data = try Data(contentsOf: url)
                     let activityController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
                     present(activityController, animated: true, completion: nil)

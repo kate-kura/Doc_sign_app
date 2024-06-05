@@ -17,6 +17,7 @@ enum LogMessageType: String {
     case settings
 }
 
+//MARK: Сlass that prints Logs
 class Logg {
     static func err(_ messageType: LogMessageType, _ message: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         switch messageType {
@@ -29,7 +30,7 @@ class Logg {
         case LogMessageType.warning:
             print(" 🟠 Warning: \(message)")
         case LogMessageType.error:
-            print(" 🔴 Error: \(message)\nOccured in \(file) at line \(line)") //~~FIXME:~~ Occured in .../Logger.swift at line 31 //MARK: Should work correct now
+            print(" 🔴 Error: \(message)\nOccured in \(file) at line \(line)") 
         case LogMessageType.debug:
             print(" 🟣 DEBUG: \(message)")
         case LogMessageType.AFdebug:

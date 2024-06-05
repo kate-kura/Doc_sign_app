@@ -43,7 +43,6 @@
 		C4786EB42BDA840500182397 /* CustomPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB22BDA840500182397 /* CustomPasswordTextField.swift */; };
 		C4786EB52BDA840500182397 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB32BDA840500182397 /* CustomTextField.swift */; };
 		C4786EB72BE7AB1600182397 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */; };
-		C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */; };
 		C4786EBB2BE8C91700182397 /* DocFromQRcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EBA2BE8C91600182397 /* DocFromQRcodeViewController.swift */; };
 		C4786EBD2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4786EBC2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift */; };
 		C48674872BA8810300CA47D6 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48674862BA8810300CA47D6 /* ContainerViewController.swift */; };
@@ -126,7 +125,6 @@
 		C4786EB22BDA840500182397 /* CustomPasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPasswordTextField.swift; sourceTree = "<group>"; };
 		C4786EB32BDA840500182397 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C4786EB62BE7AB1600182397 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
-		C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController4.swift; sourceTree = "<group>"; };
 		C4786EBA2BE8C91600182397 /* DocFromQRcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocFromQRcodeViewController.swift; sourceTree = "<group>"; };
 		C4786EBC2BE8CA0900182397 /* DocFromQRcodeIsSignedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocFromQRcodeIsSignedViewController.swift; sourceTree = "<group>"; };
 		C48674862BA8810300CA47D6 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 				C4425E6E2BC3E72900038D74 /* ProfileViewController1.swift */,
 				C4425E782BC40E2F00038D74 /* ProfileViewController2.swift */,
 				C4425E7A2BC411A500038D74 /* ProfileViewController3.swift */,
-				C4786EB82BE7CDB100182397 /* ProfileViewController4.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -570,7 +567,6 @@
 				C4E9BB1B2BC90E58001A758F /* AppManager.swift in Sources */,
 				C4A6906D2BF357EB00FC0C12 /* Models.swift in Sources */,
 				C4DB2B5A2BCE7D420064375B /* Debugger.swift in Sources */,
-				C4786EB92BE7CDB100182397 /* ProfileViewController4.swift in Sources */,
 				C4A690652BE8F8DC00FC0C12 /* CustomBackgroundView.swift in Sources */,
 				C4526A022BFDFB76004739F1 /* CoreData.xcdatamodeld in Sources */,
 				C45269FD2BFDC8B0004739F1 /* CustomPopupButton.swift in Sources */,

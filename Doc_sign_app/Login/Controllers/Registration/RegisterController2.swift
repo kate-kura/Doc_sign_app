@@ -17,6 +17,7 @@ final class RegisterViewController2: UIViewController {
     private let codeTextField = CustomTextField()
     private let nextButton = CustomButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +35,7 @@ final class RegisterViewController2: UIViewController {
 
 extension RegisterViewController2{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -113,6 +115,8 @@ extension RegisterViewController2{
         
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         self.dismiss(animated: false, completion: nil)
     }
@@ -121,6 +125,7 @@ extension RegisterViewController2{
         
         guard let code = self.codeTextField.text else {return}
         
+        // Backend communication
         AuthManager().confirmSignUp(code: code, completion: { result in
             if result {
                 let vc = RegisterViewController3()
@@ -135,6 +140,7 @@ extension RegisterViewController2{
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension RegisterViewController2: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         DispatchQueue.main.async {
@@ -143,6 +149,7 @@ extension RegisterViewController2: UITextFieldDelegate {
         return true
     }
     
+    // check if codeTextField is filled
     func checkTextFields() {
         guard let code = codeTextField.text else { return }
 
@@ -153,6 +160,7 @@ extension RegisterViewController2: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

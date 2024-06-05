@@ -9,8 +9,8 @@ import UIKit
 
 class ProfileViewController3: UIViewController {
     
-    private let navBarLabel = UILabel()
-    private let backButton = CustomBackButton()
+    let navBarLabel = UILabel()
+    let backButton = CustomBackButton()
     
     let basicLabel = UILabel()
     let nameHeader = UILabel()
@@ -22,10 +22,12 @@ class ProfileViewController3: UIViewController {
     let mailTextField = CustomUnderlinedTextField()
     let nextButton = CustomButton()
     
+    // Get data from user defaults
     let firstName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserFirstName)
     let lastName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserLastName)
     let email: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserEmail)
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +47,7 @@ class ProfileViewController3: UIViewController {
 
 extension ProfileViewController3 {
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(navBarLabel)
@@ -177,6 +180,7 @@ extension ProfileViewController3 {
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
     @objc private func didTapBack() {
         self.dismiss(animated: false, completion: nil)
     }
@@ -205,6 +209,7 @@ extension ProfileViewController3 {
             return
         }
         
+        // Backend communication
         ProfileManager().updateUserProfileDetails(firstName: name, lastName: surname, email: email, completion: { result in
             if result {
                 let vc = ContainerViewController()
@@ -212,16 +217,13 @@ extension ProfileViewController3 {
                 self.present(vc, animated: false, completion: nil)
             } else {
                 Logg.err(.error, "Something went wrong during updating User Profile Details.")
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
-        
-//        let vc = ProfileViewController4()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: false, completion: nil)
-
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension ProfileViewController3: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -231,6 +233,7 @@ extension ProfileViewController3: UITextFieldDelegate {
         return true
     }
     
+    // check if nameTextField, surnameTextField and mailTextField match previous values
     func checkTextFields() {
         guard let name = nameTextField.text, let surname = surnameTextField.text, let mail = mailTextField.text else { return }
 
@@ -241,6 +244,7 @@ extension ProfileViewController3: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

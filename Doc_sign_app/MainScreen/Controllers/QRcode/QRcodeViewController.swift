@@ -19,6 +19,7 @@ class QRcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     var vedioPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,11 +30,14 @@ class QRcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         nextButton.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
         
+        // Get camera device
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             Logg.err(.error, "Failed to get the camera device")
+            AlertManager.showCameraError(on: self)
             return
         }
         
+        // Capture session setup
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
@@ -45,22 +49,24 @@ class QRcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             captureMetaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetaDataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             
+            // Vedio preview setup
             vedioPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             vedioPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             vedioPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(vedioPreviewLayer!)
             
+            // Start capture session
             DispatchQueue.global(qos: .userInitiated).async {
                 self.captureSession.startRunning()
             }
             
+            // view setup
             view.bringSubviewToFront(backgroundView)
             view.bringSubviewToFront(backButton)
             view.bringSubviewToFront(massageLabel)
             view.bringSubviewToFront(nextButton)
             
             qrCodeFrameView = UIView()
-            
             if let qrcodeFrameView = qrCodeFrameView {
                 qrcodeFrameView.layer.borderColor = Resources.Colors.redColor.cgColor
                 qrcodeFrameView.layer.borderWidth = 2
@@ -81,6 +87,7 @@ class QRcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
 extension QRcodeViewController {
     
+    // MARK: - UI Setup
     func addViews() {
         view.addSubview(backgroundView)
         view.addSubview(backButton)
@@ -133,7 +140,9 @@ extension QRcodeViewController {
         nextButton.isHidden = true
     }
     
+    // Processing of QR-code scanning results
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        // Setup view when QR-code is NOT detected
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
             massageLabel.text = Resources.Strings.qrText
@@ -141,17 +150,20 @@ extension QRcodeViewController {
             return
         }
         
+        // Retrieve the first detected metadata object
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
+        // Check if metadata object is QR-code
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
             let qrCodeObject = vedioPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = qrCodeObject!.bounds
             
+            // Show nextButton if QR-code is successfully scanned
             if metadataObj.stringValue != nil {
-//                massageLabel.text = metadataObj.stringValue
                 nextButton.isHidden = false
             }
             
+            // Save QR-code ID in UserDefaults
             if let qrCodeString = metadataObj.stringValue {
                 let components = qrCodeString.components(separatedBy: "/")
                 DefaultsHelper().setString(string: components.last ?? "", key: Resources.Keys.keyCurrentQRcodeID)
@@ -159,6 +171,7 @@ extension QRcodeViewController {
         }
     }
     
+    // MARK: - Selectors
     @objc private func didTapBack() {
         let vc = ContainerViewController()
         captureSession.stopRunning()
@@ -168,6 +181,7 @@ extension QRcodeViewController {
     
     @objc private func didTapNext() {
         
+        // Backend communication
         ContractsManager().getFormContentFromQR(completion: { result in
             if result {
                 ContractsManager().getPDFForm(completion: {result in
@@ -178,16 +192,20 @@ extension QRcodeViewController {
                         self.present(vc, animated: false, completion: nil)
                     } else {
                         Logg.err(.error, "Something went wrong during getting PDF Form.")
+                        AlertManager.showFetchingBackendError(on: self)
                     }
                 })
             } else {
                 Logg.err(.error, "Something went wrong during getting Form Content.")
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
         
+        // Backend communication
         ContractsManager().getFormFields(completion: { result in
             if result {} else {
                 Logg.err(.error, "Something went wrong during getting Form Fields.")
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
     }

@@ -7,7 +7,10 @@
 
 import UIKit
 
+//MARK: Сonstant values enumeration
 enum Resources {
+    
+    //MARK: Colors
     enum Colors {
         static var buttonActive = UIColor(hexString: "#3185FC")
         static var background = UIColor(hexString: "#FBFBFF")
@@ -16,9 +19,9 @@ enum Resources {
         static var primaryLabelColor = UIColor(hexString: "#262626")
         static var redColor = UIColor(hexString: "#F45D2D")
         static var greenColor = UIColor(hexString: "#54DB7F")
-        
     }
     
+    //MARK: Strings
     enum Strings {
         static var enter = "Вход"
         static var registerPrimaryText = "Регистрация"
@@ -80,6 +83,7 @@ enum Resources {
         static var export = "Экспорт в PDF"
     }
     
+    //MARK: Images
     enum Images {
         static var logo = UIImage(named: "po_rukam_logo")
         static var arrowLeft = UIImage(systemName: "chevron.left")
@@ -96,13 +100,10 @@ enum Resources {
         static var check = UIImage(systemName: "checkmark")
         static var ellipsis = UIImage(systemName: "ellipsis")
         static var share = UIImage(systemName: "square.and.arrow.up")
-        
     }
     
+    //MARK: Fonts
     enum Fonts {
-        static func montserratRegular(with size: CGFloat) -> UIFont {
-            UIFont(name: "Montserrat", size: size) ?? UIFont()
-        }
         static func helveticaRegular(with size: CGFloat) -> UIFont {
             UIFont(name: "Helvetica", size: size) ?? UIFont()
         }
@@ -111,10 +112,11 @@ enum Resources {
         }
     }
     
+    //MARK: URLs
     enum API {
         static let baseURL = "http://77.232.143.172:8080/api/v1"
         
-        //Auth
+        // Auth
         static let signInURL = baseURL + "/users/physical/auth/sign_in"
         
         static let registrationURL = baseURL + "/users/physical/auth/sign_up/init"
@@ -127,24 +129,24 @@ enum Resources {
         static let confirmChangePasswordURL = baseURL + "/users/physical/auth/change_password/verify_code/"
         static let setNewPasswordURL = baseURL + "/users/physical/auth/change_password/set_new_password"
         
-        static let logoutURL = baseURL + "/users/physical/auth/log_out"
-        
+        // Profile
         static let getUserProfileDetailsURL = baseURL + "/users/physical/profile/get_me"
         static let updateUserProfileDetailsURL = baseURL + "/users/physical/profile/update_me"
         
+        // Contracts
         static let getListOfContractsURL = baseURL + "/contracts/get_list_for_user"
         static let getPDFContractURL = baseURL + "/contracts/get_contract_pdf_v2/"
         static let getContractContentURL = baseURL + "/contracts/get_contract_content/"
         
+        // Forms
         static let getFormContentURL = baseURL + "/forms/get_form_content/"
         static let getPDFFormURL = baseURL + "/forms/get_form_pdf_v2/"
         static let getFormFieldsURL = baseURL + "/forms/get_form_fields/"
         static let fillFormFieldsURL = baseURL + "/forms/fill_form_fields"
-        
     }
     
+    //MARK: UserDefaults Keys
     enum Keys {
-        //MARK: UserDefaults Keys
         static let keyCheckFirstLaunch = "appWasLaunchedBefore"
         static let keyCheckIfSignedIn = "userIsSignedIn"
         static let keyCurrentUserEmail = "currentUserEmail"

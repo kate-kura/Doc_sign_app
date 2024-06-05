@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Email, Password, Name and Surname Validator
 class Validator {
     
     static func isValidEmail(for email: String) -> Bool {

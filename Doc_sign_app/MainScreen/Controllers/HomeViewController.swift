@@ -23,10 +23,13 @@ class HomeViewController: UIViewController {
     let tableView = UITableView()
     let addButton = CustomAddButton()
     
+    // Model
     var data: [Contract] = []
+    
     var filteredData: [Contract] = []
     var filtered = false
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +37,12 @@ class HomeViewController: UIViewController {
         layoutViews()
         configure()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchTextField.delegate = self
+        
         data = DatabaseManager.shared.fetchContracts()
-        tableView.reloadData()
         updateUI()
-        print(data)
-        print(data.isEmpty)
         
         navigationController?.navigationBar.backgroundColor = Resources.Colors.background
         navigationController?.additionalSafeAreaInsets.top = 12
@@ -50,6 +54,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
 
+    // MARK: - UI Setup
     func addViews() {
         view.addSubview(sideButton)
         view.addSubview(searchTextField)
@@ -118,7 +123,6 @@ extension HomeViewController {
         searchTextField.placeholder = Resources.Strings.search
         searchTextField.keyboardType = .default
         searchTextField.textColor = Resources.Colors.secondaryLabelColor
-        searchTextField.delegate = self
         searchTextField.autocapitalizationType = .sentences
         
         let textFieldContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 312, height: 40))
@@ -152,13 +156,11 @@ extension HomeViewController {
         primaryLabel.sizeToFit()
 
         tableView.backgroundColor = Resources.Colors.background
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CustomCell.self,
-                           forCellReuseIdentifier: "CustomCellIdentifier")
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCellIdentifier")
         tableView.separatorColor = .clear
     }
     
+    // check is data empty and update UI
     func updateUI() {
         if data.isEmpty {
             logoImageView.isHidden = false
@@ -173,6 +175,7 @@ extension HomeViewController {
         }
     }
 
+    // MARK: - Selectors
     @objc func didTapMenuButton() {
         delegate?.didTapMenuButton()
     }
@@ -185,7 +188,10 @@ extension HomeViewController {
 
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    // return number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !filteredData.isEmpty {
             return filteredData.count
@@ -193,6 +199,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return filtered ? 0 : data.count
     }
     
+    // cell setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier", for: indexPath) as! CustomCell
     
@@ -212,6 +219,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
         return cell
     }
+    
+    // MARK: - Selector
     @objc func cellButtonTapped(_ sender: UIButton) {
         let vc = BottomMenuViewController()
         
@@ -232,18 +241,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         present(vc, animated: true)
     }
     
+    // cancel row selection
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
     
+    // ruturn row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 152
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension HomeViewController: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         if let text = textField.text {
             filterText(text+string)
         }
@@ -251,11 +263,16 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
+    // adds data items to filteredData that begin with a query
     func filterText(_ query: String) {
-        filteredData.removeAll()
-        for string in data {
-            if string.title!.lowercased().starts(with: query.lowercased()) {
-                filteredData.append(string)
+        if query.isEmpty {
+            filteredData = data
+        } else {
+            filteredData.removeAll()
+            for string in data {
+                if string.title!.lowercased().starts(with: query.lowercased()) {
+                    filteredData.append(string)
+                }
             }
         }
         
@@ -263,6 +280,7 @@ extension HomeViewController: UITextFieldDelegate {
         filtered = true
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

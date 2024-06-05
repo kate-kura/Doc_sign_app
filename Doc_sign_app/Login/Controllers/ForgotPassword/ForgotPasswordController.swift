@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+final class ForgotPasswordViewController: UIViewController {
     
     private let backButton = CustomBackButton()
     
@@ -16,6 +16,7 @@ class ForgotPasswordViewController: UIViewController {
     private let nextButton = CustomButton()
     private let stackView = UIStackView()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +34,7 @@ class ForgotPasswordViewController: UIViewController {
 
 extension ForgotPasswordViewController{
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(backButton)
         view.addSubview(primaryLabel)
@@ -94,6 +96,8 @@ extension ForgotPasswordViewController{
         nextButton.isEnabled = false
     }
     
+    // MARK: - Selectors
+    
     @objc private func didTapBack() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -108,6 +112,7 @@ extension ForgotPasswordViewController{
             return
         }
         
+        // Backend communication
         AuthManager().changePassword(email: email, completion: { result in
             if result {
                 let vc = ForgotPasswordViewController2()
@@ -120,6 +125,7 @@ extension ForgotPasswordViewController{
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension ForgotPasswordViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         DispatchQueue.main.async {
@@ -128,6 +134,7 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
         return true
     }
     
+    // check if emailTextField is filled
     func checkTextFields() {
         guard let mail = emailTextField.text else { return }
 
@@ -138,6 +145,7 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
         }
     }
     
+    // hide keyboard with return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

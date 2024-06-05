@@ -14,6 +14,7 @@ class DocFromQRcodeIsSignedViewController: UIViewController {
     let label = UILabel()
     let nextButton = CustomButton()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +29,7 @@ class DocFromQRcodeIsSignedViewController: UIViewController {
 
 extension DocFromQRcodeIsSignedViewController {
     
+    // MARK: - UI Setup
     private func addViews() {
         view.addSubview(circleView)
         view.addSubview(iconView)
@@ -84,8 +86,10 @@ extension DocFromQRcodeIsSignedViewController {
         nextButton.isEnabled = true
     }
     
+    // MARK: - Selectors
     @objc private func didTapNext() {
         
+        // Backend communication
         ContractsManager().getContractContent(completion: { result in
             if result {
                 let vc = ContainerViewController()
@@ -93,6 +97,7 @@ extension DocFromQRcodeIsSignedViewController {
                 self.present(vc, animated: false, completion: nil)
             } else {
                 Logg.err(.error, "Something went wrong during getting Contract Content.")
+                AlertManager.showFetchingBackendError(on: self)
             }
         })
     }

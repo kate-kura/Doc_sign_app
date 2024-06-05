@@ -27,10 +27,12 @@ class MenuViewController: UIViewController {
     let qrCodeButtom = CustomQRCodeButton()
     let archiveButton = CustomArchiveButton()
     
+    // Get data from user defaults
     let firstName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserFirstName)
     let lastName: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserLastName)
     let email: String? = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserEmail) 
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,18 +48,20 @@ class MenuViewController: UIViewController {
         profileButton.addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
         profileButton.addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
         
+        // check is App was Launched Before and User is Logged In -> load avatar image
         let (wasLaunchedBefore, isLoggedIn) = Debugger().checkOnLaunch()
         if (isLoggedIn && wasLaunchedBefore) {
             loadImageFromLocal()
         } else {
-            UserDefaults.standard.removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
-            UserDefaults.standard.synchronize()
+            DefaultsHelper().removeObject(forKey: Resources.Keys.keyCurrentUserProfileImage)
         }
     }
     
 }
 
 extension MenuViewController {
+    
+    // MARK: - UI Setup
     func addViews() {
         view.addSubview(avatarImageView)
         view.addSubview(profileButton)
@@ -125,6 +129,7 @@ extension MenuViewController {
         
     }
     
+    // Load image from local storage
     func loadImageFromLocal() {
         if let filename = DefaultsHelper().getString(key: Resources.Keys.keyCurrentUserProfileImage) {
             let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
@@ -139,6 +144,7 @@ extension MenuViewController {
         }
     }
     
+    // MARK: - Selectors
     @objc func didSelect(sender: UIButton) {
         switch sender {
         case profileButton:
