@@ -102,7 +102,7 @@ extension AlertManager {
 }
 
 
-// MARK: - Fetching Backend Errors
+// MARK: - Fetching Camera Errors
 extension AlertManager {
     
     public static func showCameraError(on vc: UIViewController) {
